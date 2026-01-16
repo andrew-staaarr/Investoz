@@ -3,254 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdraw - KBG Crypto</title>
+    <title>Withdraw • KBG Crypto</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Toast for notifications -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-particles"></div>
+
     <div class="app-container">
-        <header class="app-header">
+        <!-- Premium Header -->
+        <header class="app-header premium-header">
             <div class="header-left">
                 <button class="back-btn" onclick="window.history.back()">←</button>
             </div>
             <div class="header-center">Withdraw</div>
         </header>
 
-        <main class="withdraw-content">
-            <!-- Balance Overview -->
-            <section class="withdraw-balance glass-card">
-                <div class="balance-info">
-                    <span class="label">Available Balance</span>
-                    <div class="amount" id="balance-amount">2,660,222.00 USDT</div>
+        <main class="withdraw-main">
+            <!-- Balance & VIP Status -->
+            <section class="withdraw-balance premium-card glass-glow">
+                <div class="balance-header">
+                    <div class="user-info">
+                        <span class="greeting">Welcome back,</span>
+                        <span class="username">cek622</span>
+                        <span class="vip-badge vip6 glowing-vip">VIP6</span>
+                    </div>
                 </div>
-                <div class="vip-info">
-                    <span class="vip-label">VIP6 Withdrawal Limit Remaining </span>
-                    <span class="vip-value">2,895 USDT</span>
+
+                <div class="balance-display">
+                    <div class="label">Available Balance</div>
+                    <div class="big-balance gradient-text">7,660,222.00 <span class="currency">USDT</span></div>
+                </div>
+
+                <div class="limits-row">
+                    <div class="limit-box">
+                        <div class="limit-label">Daily Limit</div>
+                        <div class="limit-value">5,000,000 USDT</div>
+                    </div>
+                    <div class="limit-box">
+                        <div class="limit-label">Monthly Limit</div>
+                        <div class="limit-value">50,000,000 USDT</div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Withdrawal Form -->
-            <section class="withdraw-form glass-card">
-                <h2 class="section-title">Withdraw Funds</h2>
+            <!-- Withdrawal Form – Premium Glass Panel -->
+            <section class="withdraw-interface premium-card glass-glow">
+                <h2 class="gradient-title">Withdraw Funds</h2>
 
-                <div class="form-group">
-                    <label>Network</label>
-                    <select id="withdraw-network" class="form-select" onchange="updateFeeAndReceive()">
-                        <option value="trc20">TRC20 (Recommended - Low Fees)</option>
-                        <option value="erc20">ERC20 (Ethereum)</option>
-                        <option value="btc">Bitcoin (BTC)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Recipient Wallet Address</label>
-                    <input type="text" id="recipient-address" placeholder="Enter wallet address" class="form-input">
-                </div>
-
-                <div class="form-group">
-                    <label>Withdrawal Amount (USDT)</label>
-                    <input type="number" id="withdraw-amount" placeholder="Enter amount" min="100" step="0.01" class="form-input" oninput="updateFeeAndReceive()">
-                    <div class="amount-hint">
-                        <button class="btn-max" onclick="setMaxAmount()">MAX</button>
-                        <span>Available: <strong>7,660,222.00 USDT</strong></span>
+                <div class="withdraw-form">
+                    <div class="form-row">
+                        <label>Wallet Address</label>
+                        <input type="text" class="form-input premium-input" placeholder="Enter your wallet address" />
                     </div>
-                </div>
 
-                <div class="fee-info">
-                    <div class="fee-row">
-                        <span>Estimated Network Fee</span>
-                        <span id="fee-amount">1.00 USDT</span>
+                    <div class="form-row">
+                        <label>Amount (USDT)</label>
+                        <input type="text" class="form-input premium-input" placeholder="0.00" />
                     </div>
-                    <div class="fee-row total">
-                        <span>You will receive</span>
-                        <span id="receive-amount" class="highlight">0.00 USDT</span>
-                    </div>
-                </div>
 
-                <button class="btn-withdraw" onclick="showWithdrawModal()">Submit Withdrawal</button>
-            </section>
-
-            <!-- Recent Withdrawals -->
-            <section class="recent-withdrawals glass-card">
-                <h3 class="section-title">Recent Withdrawals</h3>
-                <div class="withdraws-list">
-                    <div class="withdraw-item">
-                        <div class="withdraw-date">Jan 9, 2026 22:47</div>
-                        <div class="withdraw-info">
-                            <span class="withdraw-amount negative">-120,000.00 USDT</span>
-                            <span class="withdraw-method">TRC20</span>
+                    <div class="fee-info">
+                        <div class="fee-row">
+                            <span>Network Fee</span>
+                            <span>1.00 USDT</span>
                         </div>
-                        <span class="status pending">Pending</span>
-                    </div>
-                    <div class="withdraw-item">
-                        <div class="withdraw-date">Jan 5, 2026 11:20</div>
-                        <div class="withdraw-info">
-                            <span class="withdraw-amount negative">-50,000.00 USDT</span>
-                            <span class="withdraw-method">ERC20</span>
+                        <div class="fee-row total">
+                            <span>Total</span>
+                            <span class="total-value">0.00 USDT</span>
                         </div>
-                        <span class="status completed">Completed</span>
                     </div>
+
+                    <button class="btn-withdraw premium-btn" onclick="showConfirmWithdraw()">Withdraw Now</button>
                 </div>
             </section>
-        </main>
 
-        <nav class="bottom-nav">
-            <a href="home.html" class="nav-item">
-                <span class="nav-icon">🏠</span>
-                <span>Home</span>
-            </a>
-            <a href="trade.html" class="nav-item">
-                <span class="nav-icon">📊</span>
-                <span>Trade</span>
-            </a>
-            <a href="transfer.html" class="nav-item">
-                <span class="nav-icon">💸</span>
-                <span>Transfer</span>
-            </a>
-            <a href="account.html" class="nav-item">
-                <span class="nav-icon">👤</span>
-                <span>My Account</span>
-            </a>
-        </nav>
-
-        <!-- Withdrawal Confirmation Modal -->
-        <div id="withdraw-modal" class="modal-overlay" style="display: none;">
-            <div class="modal-content glass-card">
-                <h2 class="modal-title">Confirm Withdrawal</h2>
-
-                <div class="modal-summary">
-                    <div class="summary-item">
-                        <span class="summary-label">Network</span>
-                        <span class="summary-value" id="modal-withdraw-network">TRC20</span>
+            <!-- Confirmation Popup -->
+            <div id="confirm-withdraw-popup" class="modal-overlay" style="display: none;">
+                <div class="modal-content glass-glow">
+                    <button class="modal-close" onclick="closeConfirmWithdraw()">×</button>
+                    <h2 class="modal-title">Confirm Withdrawal</h2>
+                    <p class="modal-message">Are you sure you want to withdraw?</p>
+                    <div class="modal-actions">
+                        <button class="btn-cancel" onclick="closeConfirmWithdraw()">Cancel</button>
+                        <button class="btn-confirm premium-btn" onclick="showExpiredError()">Confirm & Submit</button>
                     </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Requested Amount</span>
-                        <span class="summary-value" id="modal-withdraw-amount">0.00 USDT</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Estimated Fee</span>
-                        <span class="summary-value" id="modal-fee">1.00 USDT</span>
-                    </div>
-                    <div class="summary-item total">
-                        <span class="summary-label">You will receive</span>
-                        <span class="summary-value highlight" id="modal-receive">0.00 USDT</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">To Address</span>
-                        <span class="summary-value wallet" id="modal-recipient">...</span>
-                    </div>
-                </div>
-
-                <div class="modal-warning">
-                    <strong>Critical Notice:</strong> This action is irreversible. Double-check the wallet address and network. Sending to wrong address/network may result in permanent loss of funds.
-                </div>
-
-                <div class="modal-actions">
-                    <button class="btn-cancel" onclick="closeWithdrawModal()">Cancel</button>
-                    <button class="btn-confirm" onclick="confirmWithdrawal()">Confirm & Submit</button>
                 </div>
             </div>
-        </div>
+
+            <!-- Expired Plan Error Popup (same as trade page) -->
+            <div id="expired-popup" class="modal-overlay" style="display: none;">
+                <div class="modal-content glass-glow">
+                    <button class="modal-close" onclick="closeExpiredPopup()">×</button>
+                    <h2 class="modal-title gradient-title">Plan Expired</h2>
+                    <p class="modal-message">Increase your plan first. Your current plan is expired.</p>
+                    <div class="modal-actions">
+                        <button class="btn-upgrade premium-btn" onclick="window.location.href='membership.html'">Upgrade Plan</button>
+                        <button class="btn-cancel" onclick="closeExpiredPopup()">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav premium-nav">
+                <a href="home.html" class="nav-item">
+                    <span>Dashboard</span>
+                </a>
+                <a href="trade.html" class="nav-item">
+                    <span>Trade</span>
+                </a>
+                <a href="transfer.html" class="nav-item">
+                    <span>Transfer</span>
+                </a>
+                <a href="account.html" class="nav-item">
+                    <span>Account</span>
+                </a>
+            </nav>
+        </main>
     </div>
 
-    <!-- Toast library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
     <script>
-        // Fee calculation logic (realistic simulation)
-        function calculateFee(amount, network) {
-            if (network === "trc20") {
-                return 1.0; // Fixed low fee for TRON network
-            } else if (network === "erc20") {
-                // Ethereum: base gas + percentage (simplified real-world approx)
-                const baseGas = 5.0;
-                return Math.max(5.0, baseGas + amount * 0.0015);
-            } else if (network === "btc") {
-                // Bitcoin: higher percentage due to network fees
-                return Math.max(10.0, amount * 0.0008);
-            }
-            return 0;
+        // Confirm Withdrawal Popup
+        function showConfirmWithdraw() {
+            document.getElementById('confirm-withdraw-popup').style.display = 'flex';
         }
 
-        // Update fee & receive amount in real-time
-        function updateFeeAndReceive() {
-            const amountInput = document.getElementById('withdraw-amount');
-            const network = document.getElementById('withdraw-network').value;
-            const amount = parseFloat(amountInput.value) || 0;
-
-            const fee = calculateFee(amount, network);
-            const receive = Math.max(0, amount - fee);
-
-            document.getElementById('fee-amount').textContent = fee.toFixed(2) + ' USDT';
-            document.getElementById('receive-amount').textContent = receive.toFixed(2) + ' USDT';
+        function closeConfirmWithdraw() {
+            document.getElementById('confirm-withdraw-popup').style.display = 'none';
         }
 
-        // Set max available amount
-        function setMaxAmount() {
-            const available = 7660222.00;
-            document.getElementById('withdraw-amount').value = available;
-            updateFeeAndReceive();
+        // Show Expired Error (same as trade page)
+        function showExpiredError() {
+            closeConfirmWithdraw(); // Close confirm popup first
+            document.getElementById('expired-popup').style.display = 'flex';
         }
 
-        // Show confirmation modal
-        function showWithdrawModal() {
-            const amountInput = document.getElementById('withdraw-amount');
-            const addressInput = document.getElementById('recipient-address');
-            const networkSelect = document.getElementById('withdraw-network');
-
-            const amount = parseFloat(amountInput.value) || 0;
-            const address = addressInput.value.trim();
-            const network = networkSelect.value;
-
-            if (amount < 100) {
-                toastr.warning('Minimum withdrawal amount is 100 USDT');
-                return;
-            }
-
-            if (!address) {
-                toastr.warning('Please enter a valid recipient wallet address');
-                return;
-            }
-
-            const fee = calculateFee(amount, network);
-            const receive = amount - fee;
-
-            // Fill modal
-            document.getElementById('modal-withdraw-network').textContent = network.toUpperCase();
-            document.getElementById('modal-withdraw-amount').textContent = amount.toFixed(2) + ' USDT';
-            document.getElementById('modal-fee').textContent = fee.toFixed(2) + ' USDT';
-            document.getElementById('modal-receive').textContent = receive.toFixed(2) + ' USDT';
-            document.getElementById('modal-recipient').textContent = address;
-
-            // Show modal
-            document.getElementById('withdraw-modal').style.display = 'flex';
+        function closeExpiredPopup() {
+            document.getElementById('expired-popup').style.display = 'none';
         }
-
-        // Close modal
-        function closeWithdrawModal() {
-            document.getElementById('withdraw-modal').style.display = 'none';
-        }
-
-        // Confirm withdrawal (placeholder for real backend call)
-        function confirmWithdrawal() {
-            const amount = document.getElementById('modal-withdraw-amount').textContent;
-            toastr.success(`Withdrawal request of ${amount} submitted successfully!`);
-            closeWithdrawModal();
-
-            // In real app: send to Supabase/backend here
-            // Example:
-            // supabase.from('withdrawals').insert({ amount, network, address, status: 'pending' })
-        }
-
-        // Close modal when clicking outside content
-        document.getElementById('withdraw-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeWithdrawModal();
-        });
-
-        // Initial setup
-        updateFeeAndReceive();
     </script>
 </body>
 </html>
