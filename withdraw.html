@@ -54,12 +54,16 @@
                 <div class="withdraw-form">
                     <div class="form-row">
                         <label>Wallet Address</label>
-                        <input type="text" class="form-input premium-input" placeholder="Enter your wallet address" />
+                        <input type="text" class="form-input premium-input" placeholder="Enter your wallet address" id="wallet-address" />
                     </div>
 
                     <div class="form-row">
                         <label>Amount (USDT)</label>
-                        <input type="text" class="form-input premium-input" placeholder="0.00" />
+                        <input type="number" class="form-input premium-input" placeholder="0.00" id="withdraw-amount" min="0" step="0.01" oninput="calculateTotal()" />
+                        <p class="min-note">Minimum withdrawal: 5,000 USDT</p>
+                        <p class="error-message" id="amount-error" style="display: none; color: #f87171; font-size: 0.9rem; margin-top: 0.5rem;">
+                            Minimum withdrawal amount is 5,000 USDT
+                        </p>
                     </div>
 
                     <div class="fee-info">
@@ -69,7 +73,7 @@
                         </div>
                         <div class="fee-row total">
                             <span>Total</span>
-                            <span class="total-value">0.00 USDT</span>
+                            <span class="total-value" id="total-amount">0.00 USDT</span>
                         </div>
                     </div>
 
@@ -122,8 +126,39 @@
     </div>
 
     <script>
+        // Calculate Total Amount
+        function calculateTotal() {
+            const amountInput = document.getElementById('withdraw-amount');
+            const totalEl = document.getElementById('total-amount');
+            const errorEl = document.getElementById('amount-error');
+
+            const amount = parseFloat(amountInput.value) || 0;
+            const fee = 1.00;
+            const total = amount + fee;
+
+            totalEl.textContent = total.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }) + ' USDT';
+
+            // Minimum check
+            if (amount > 0 && amount < 5000) {
+                errorEl.style.display = 'block';
+            } else {
+                errorEl.style.display = 'none';
+            }
+        }
+
         // Confirm Withdrawal Popup
         function showConfirmWithdraw() {
+            const amountInput = document.getElementById('withdraw-amount');
+            const amount = parseFloat(amountInput.value) || 0;
+
+            if (amount < 5000) {
+                document.getElementById('amount-error').style.display = 'block';
+                return;
+            }
+
             document.getElementById('confirm-withdraw-popup').style.display = 'flex';
         }
 
