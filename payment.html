@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - KBG Crypto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header glass-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.history.back()">←</button>
+            </div>
+            <div class="header-center">Plan Payment</div>
+        </header>
+
+        <main class="payment-content">
+            <!-- Plan Summary -->
+            <section class="plan-summary glass-card">
+                <h2 class="section-title">Upgrade to VIP <span id="plan-level">V1</span></h2>
+                <div class="summary-item">
+                    <span class="label">Required Deposit</span>
+                    <span class="value highlight" id="plan-amount">1,498.50 USDT</span>
+                </div>
+                <p class="note">Please deposit the exact amount to the provided wallet. Your plan will activate automatically upon confirmation.</p>
+            </section>
+
+            <!-- Payment Methods -->
+            <section class="payment-methods glass-card">
+                <h3 class="section-subtitle">Select Payment Method</h3>
+                <div class="methods-grid">
+                    <button class="method-card active" data-method="usdt">
+                        <span class="method-icon">USDT</span>
+                        <span class="method-name">USDT (TRC20)</span>
+                        <span class="method-desc">Low Fees • Instant</span>
+                    </button>
+                    <button class="method-card" data-method="bitcoin">
+                        <span class="method-icon">BTC</span>
+                        <span class="method-name">Bitcoin</span>
+                        <span class="method-desc">Secure • Reliable</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Wallet Details -->
+            <section class="wallet-details glass-card" id="wallet-details">
+                <div class="qr-section">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=example-wallet-address" alt="QR Code" class="qr-code">
+                </div>
+                <div class="wallet-info">
+                    <label>Wallet Address</label>
+                    <div class="wallet-address" id="wallet-address">example-wallet-address-goes-here</div>
+                    <button class="btn-copy" onclick="copyAddress()">Copy Address</button>
+                </div>
+                <div class="network-info">
+                    <span class="label">Network</span>
+                    <span class="value">TRC20 (for USDT)</span>
+                </div>
+            </section>
+
+            <!-- Confirmation Button -->
+            <button class="btn-payment-done" onclick="showConfirmationModal()">I Have Made the Payment</button>
+        </main>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmation-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content glass-card">
+                <h2 class="modal-title">Confirm Payment Details</h2>
+                <div class="modal-summary">
+                    <div class="summary-item">
+                        <span class="label">Plan</span>
+                        <span class="value" id="modal-plan">VIP V1</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Amount</span>
+                        <span class="value highlight" id="modal-amount">1,498.50 USDT</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Payment Method</span>
+                        <span class="value" id="modal-method">USDT (TRC20)</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Wallet Address</span>
+                        <span class="value wallet" id="modal-wallet">example-wallet-address</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Network</span>
+                        <span class="value" id="modal-network">TRC20</span>
+                    </div>
+                </div>
+                <div class="modal-warning">
+                    <strong>Warning:</strong> Double-check wallet address and network. Wrong details may result in permanent loss of funds. This is irreversible.
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                    <button class="btn-confirm" onclick="confirmPayment()">Confirm & Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast for copy -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script>
+            // Sample wallet addresses (update with real ones)
+            const wallets = {
+                usdt: 'TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a',  // TRC20 example
+                bitcoin: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'  // BTC example
+            };
+
+            // Get plan from URL (e.g., payment.html?plan=v1)
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan') || 'v1';
+            const amounts = { v1: 1498.50, v2: 3000.00, v3: 5000.00, v4: 6500.00 };
+            const amount = amounts[plan] || 1498.50;
+
+            // Update plan info
+            document.getElementById('plan-level').textContent = plan.toUpperCase();
+            document.getElementById('plan-amount').textContent = amount.toFixed(2) + ' USDT';
+
+            // Payment method switching
+            document.querySelectorAll('.method-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.method-card').forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    const method = card.dataset.method;
+                    document.getElementById('wallet-address').textContent = wallets[method];
+                    // Update QR if needed (dynamic QR API)
+                });
+            });
+
+            // Copy address
+            function copyAddress() {
+                const address = document.getElementById('wallet-address').textContent;
+                navigator.clipboard.writeText(address).then(() => {
+                    toastr.success('Address copied to clipboard!');
+                });
+            }
+
+            // Show confirmation modal
+            function showConfirmationModal() {
+                const selectedMethod = document.querySelector('.method-card.active').dataset.method;
+                document.getElementById('modal-plan').textContent = plan.toUpperCase();
+                document.getElementById('modal-amount').textContent = amount.toFixed(2) + ' USDT';
+                document.getElementById('modal-method').textContent = selectedMethod.toUpperCase();
+                document.getElementById('modal-wallet').textContent = document.getElementById('wallet-address').textContent;
+                document.getElementById('modal-network').textContent = selectedMethod === 'usdt' ? 'TRC20' : 'BTC Network';
+                document.getElementById('confirmation-modal').style.display = 'flex';
+            }
+
+            // Close modal
+            function closeModal() {
+                document.getElementById('confirmation-modal').style.display = 'none';
+            }
+
+            // Confirm payment
+            function confirmPayment() {
+                closeModal();
+                toastr.success('Your payment confirmation submitted. Plan upgrade in 5-10 minutes upon receipt.');
+                // Here: Add backend call if needed (e.g., Supabase)
+            }
+
+            // Close on outside click
+            document.getElementById('confirmation-modal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('confirmation-modal')) closeModal();
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw - KBG Crypto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Toast for notifications -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.history.back()">←</button>
+            </div>
+            <div class="header-center">Withdraw</div>
+        </header>
+
+        <main class="withdraw-content">
+            <!-- Balance Overview -->
+            <section class="withdraw-balance glass-card">
+                <div class="balance-info">
+                    <span class="label">Available Balance</span>
+                    <div class="amount" id="balance-amount">7,660,222.00 USDT</div>
+                </div>
+                <div class="vip-info">
+                    <span class="vip-label">VIP6 Daily Withdrawal Limit</span>
+                    <span class="vip-value">5,000,000 USDT</span>
+                </div>
+            </section>
+
+            <!-- Withdrawal Form -->
+            <section class="withdraw-form glass-card">
+                <h2 class="section-title">Withdraw Funds</h2>
+
+                <div class="form-group">
+                    <label>Network</label>
+                    <select id="withdraw-network" class="form-select" onchange="updateFeeAndReceive()">
+                        <option value="trc20">TRC20 (Recommended - Low Fees)</option>
+                        <option value="erc20">ERC20 (Ethereum)</option>
+                        <option value="btc">Bitcoin (BTC)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Recipient Wallet Address</label>
+                    <input type="text" id="recipient-address" placeholder="Enter wallet address" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label>Withdrawal Amount (USDT)</label>
+                    <input type="number" id="withdraw-amount" placeholder="Enter amount" min="100" step="0.01" class="form-input" oninput="updateFeeAndReceive()">
+                    <div class="amount-hint">
+                        <button class="btn-max" onclick="setMaxAmount()">MAX</button>
+                        <span>Available: <strong>7,660,222.00 USDT</strong></span>
+                    </div>
+                </div>
+
+                <div class="fee-info">
+                    <div class="fee-row">
+                        <span>Estimated Network Fee</span>
+                        <span id="fee-amount">1.00 USDT</span>
+                    </div>
+                    <div class="fee-row total">
+                        <span>You will receive</span>
+                        <span id="receive-amount" class="highlight">0.00 USDT</span>
+                    </div>
+                </div>
+
+                <button class="btn-withdraw" onclick="showWithdrawModal()">Submit Withdrawal</button>
+            </section>
+
+            <!-- Recent Withdrawals -->
+            <section class="recent-withdrawals glass-card">
+                <h3 class="section-title">Recent Withdrawals</h3>
+                <div class="withdraws-list">
+                    <div class="withdraw-item">
+                        <div class="withdraw-date">Jan 9, 2026 22:47</div>
+                        <div class="withdraw-info">
+                            <span class="withdraw-amount negative">-120,000.00 USDT</span>
+                            <span class="withdraw-method">TRC20</span>
+                        </div>
+                        <span class="status pending">Pending</span>
+                    </div>
+                    <div class="withdraw-item">
+                        <div class="withdraw-date">Jan 5, 2026 11:20</div>
+                        <div class="withdraw-info">
+                            <span class="withdraw-amount negative">-50,000.00 USDT</span>
+                            <span class="withdraw-method">ERC20</span>
+                        </div>
+                        <span class="status completed">Completed</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="trade.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span>Trade</span>
+            </a>
+            <a href="transfer.html" class="nav-item">
+                <span class="nav-icon">💸</span>
+                <span>Transfer</span>
+            </a>
+            <a href="account.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span>My Account</span>
+            </a>
+        </nav>
+
+        <!-- Withdrawal Confirmation Modal -->
+        <div id="withdraw-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content glass-card">
+                <h2 class="modal-title">Confirm Withdrawal</h2>
+
+                <div class="modal-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">Network</span>
+                        <span class="summary-value" id="modal-withdraw-network">TRC20</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Requested Amount</span>
+                        <span class="summary-value" id="modal-withdraw-amount">0.00 USDT</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Estimated Fee</span>
+                        <span class="summary-value" id="modal-fee">1.00 USDT</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span class="summary-label">You will receive</span>
+                        <span class="summary-value highlight" id="modal-receive">0.00 USDT</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">To Address</span>
+                        <span class="summary-value wallet" id="modal-recipient">...</span>
+                    </div>
+                </div>
+
+                <div class="modal-warning">
+                    <strong>Critical Notice:</strong> This action is irreversible. Double-check the wallet address and network. Sending to wrong address/network may result in permanent loss of funds.
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn-cancel" onclick="closeWithdrawModal()">Cancel</button>
+                    <button class="btn-confirm" onclick="confirmWithdrawal()">Confirm & Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        // Fee calculation logic (realistic simulation)
+        function calculateFee(amount, network) {
+            if (network === "trc20") {
+                return 1.0; // Fixed low fee for TRON network
+            } else if (network === "erc20") {
+                // Ethereum: base gas + percentage (simplified real-world approx)
+                const baseGas = 5.0;
+                return Math.max(5.0, baseGas + amount * 0.0015);
+            } else if (network === "btc") {
+                // Bitcoin: higher percentage due to network fees
+                return Math.max(10.0, amount * 0.0008);
+            }
+            return 0;
+        }
+
+        // Update fee & receive amount in real-time
+        function updateFeeAndReceive() {
+            const amountInput = document.getElementById('withdraw-amount');
+            const network = document.getElementById('withdraw-network').value;
+            const amount = parseFloat(amountInput.value) || 0;
+
+            const fee = calculateFee(amount, network);
+            const receive = Math.max(0, amount - fee);
+
+            document.getElementById('fee-amount').textContent = fee.toFixed(2) + ' USDT';
+            document.getElementById('receive-amount').textContent = receive.toFixed(2) + ' USDT';
+        }
+
+        // Set max available amount
+        function setMaxAmount() {
+            const available = 7660222.00;
+            document.getElementById('withdraw-amount').value = available;
+            updateFeeAndReceive();
+        }
+
+        // Show confirmation modal
+        function showWithdrawModal() {
+            const amountInput = document.getElementById('withdraw-amount');
+            const addressInput = document.getElementById('recipient-address');
+            const networkSelect = document.getElementById('withdraw-network');
+
+            const amount = parseFloat(amountInput.value) || 0;
+            const address = addressInput.value.trim();
+            const network = networkSelect.value;
+
+            if (amount < 100) {
+                toastr.warning('Minimum withdrawal amount is 100 USDT');
+                return;
+            }
+
+            if (!address) {
+                toastr.warning('Please enter a valid recipient wallet address');
+                return;
+            }
+
+            const fee = calculateFee(amount, network);
+            const receive = amount - fee;
+
+            // Fill modal
+            document.getElementById('modal-withdraw-network').textContent = network.toUpperCase();
+            document.getElementById('modal-withdraw-amount').textContent = amount.toFixed(2) + ' USDT';
+            document.getElementById('modal-fee').textContent = fee.toFixed(2) + ' USDT';
+            document.getElementById('modal-receive').textContent = receive.toFixed(2) + ' USDT';
+            document.getElementById('modal-recipient').textContent = address;
+
+            // Show modal
+            document.getElementById('withdraw-modal').style.display = 'flex';
+        }
+
+        // Close modal
+        function closeWithdrawModal() {
+            document.getElementById('withdraw-modal').style.display = 'none';
+        }
+
+        // Confirm withdrawal (placeholder for real backend call)
+        function confirmWithdrawal() {
+            const amount = document.getElementById('modal-withdraw-amount').textContent;
+            toastr.success(`Withdrawal request of ${amount} submitted successfully!`);
+            closeWithdrawModal();
+
+            // In real app: send to Supabase/backend here
+            // Example:
+            // supabase.from('withdrawals').insert({ amount, network, address, status: 'pending' })
+        }
+
+        // Close modal when clicking outside content
+        document.getElementById('withdraw-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeWithdrawModal();
+        });
+
+        // Initial setup
+        updateFeeAndReceive();
+    </script>
+</body>
+</html>

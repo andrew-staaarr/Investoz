@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade - KBG Crypto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header glass-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.history.back()">←</button>
+            </div>
+            <div class="header-center">Trade</div>
+        </header>
+
+        <main class="trade-content">
+            <!-- User Balance Card -->
+            <section class="user-balance-card glass-card">
+                <div class="balance-header">
+                    <div class="user-info">
+                        <span>Hi, <strong id="username">cek622</strong></span>
+                        <span class="vip-badge" id="vip-level">VIP6</span>
+                    </div>
+                </div>
+
+                <div class="balance-info">
+                    <span class="balance-label">Available Balance</span>
+                    <div class="balance-amount" id="balance-amount">1,460,222.00 USDT</div>
+                </div>
+
+                <div class="balance-limits">
+                    <div class="limit-item">
+                        <span class="limit-label">Withdraw Limit Remaining</span>
+                        <span class="limit-value" id="daily-limit">2,844.00 USDT</span>
+                    </div>
+                    </div>
+            </section>
+
+            <!-- USDT Investment Profit Overview -->
+            <section class="investment-profit glass-card">
+                <h2 class="section-title">USDT Investment Profit Overview</h2>
+                <p class="section-subtitle">Earn passive income by locking your USDT for fixed periods.</p>
+
+                <div class="profit-grid">
+                    <div class="profit-card">
+                        <div class="profit-header">
+                            <h3>7 Days</h3>
+                            <span class="profit-yield">1.00% APY</span>
+                        </div>
+                        <div class="profit-body">
+                            <div class="profit-row">
+                                <span>Monthly Profit (100k USDT)</span>
+                                <span class="profit-value">+833.33</span>
+                            </div>
+                            <div class="profit-row">
+                                <span>Yearly Profit</span>
+                                <span class="profit-value">+1,000.00</span>
+                            </div>
+                        </div>
+                        <button class="btn-invest" data-message="Your maximum amount already invested. When last returns would receive then you can subscribe any further plan">
+                            Invest Now
+                        </button>
+                    </div>
+
+                    <div class="profit-card highlight">
+                        <div class="profit-header">
+                            <h3>14 Days</h3>
+                            <span class="profit-yield">2.50% APY</span>
+                        </div>
+                        <div class="profit-body">
+                            <div class="profit-row">
+                                <span>Monthly Profit (100k USDT)</span>
+                                <span class="profit-value">+2,083.33</span>
+                            </div>
+                            <div class="profit-row">
+                                <span>Yearly Profit</span>
+                                <span class="profit-value">+2,500.00</span>
+                            </div>
+                        </div>
+                        <button class="btn-invest" data-message="Your maximum amount already invested. When last returns would receive then you can subscribe any further plan">
+                            Invest Now
+                        </button>
+                    </div>
+
+                    <div class="profit-card featured">
+                        <div class="profit-header">
+                            <h3>30 Days</h3>
+                            <span class="profit-yield">5.00% APY</span>
+                        </div>
+                        <div class="profit-body">
+                            <div class="profit-row">
+                                <span>Monthly Profit (100k USDT)</span>
+                                <span class="profit-value">+4,166.67</span>
+                            </div>
+                            <div class="profit-row">
+                                <span>Yearly Profit</span>
+                                <span class="profit-value">+5,000.00</span>
+                            </div>
+                        </div>
+                        <button class="btn-invest" data-message="Your maximum amount already invested. When last returns would receive then you can subscribe any further plan">
+                            Invest Now
+                        </button>
+                    </div>
+
+                    <div class="profit-card">
+                        <div class="profit-header">
+                            <h3>60 Days</h3>
+                            <span class="profit-yield">12.00% APY</span>
+                        </div>
+                        <div class="profit-body">
+                            <div class="profit-row">
+                                <span>Monthly Profit (100k USDT)</span>
+                                <span class="profit-value">+10,000.00</span>
+                            </div>
+                            <div class="profit-row">
+                                <span>Yearly Profit</span>
+                                <span class="profit-value">+12,000.00</span>
+                            </div>
+                        </div>
+                        <button class="btn-invest" data-message="Your maximum amount already invested. When last returns would receive then you can subscribe any further plan">
+                            Invest Now
+                        </button>
+                    </div>
+
+                    <div class="profit-card">
+                        <div class="profit-header">
+                            <h3>90 Days</h3>
+                            <span class="profit-yield">18.00% APY</span>
+                        </div>
+                        <div class="profit-body">
+                            <div class="profit-row">
+                                <span>Monthly Profit (100k USDT)</span>
+                                <span class="profit-value">+15,000.00</span>
+                            </div>
+                            <div class="profit-row">
+                                <span>Yearly Profit</span>
+                                <span class="profit-value">+18,000.00</span>
+                            </div>
+                        </div>
+                        <button class="btn-invest" data-message="Your maximum amount already invested. When last returns would receive then you can subscribe any further plan">
+                            Invest Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="profit-note">
+                    Minimum investment: 5,000 USDT. Yields are estimated. Early withdrawal not allowed.
+                </div>
+            </section>
+
+            <!-- Historical Profit Tracker -->
+            <section class="historical-profit glass-card">
+                <h2 class="section-title">Historical Profit Tracker</h2>
+                <p class="section-subtitle">Track your past and active investment rounds</p>
+
+                <div class="history-table-wrapper">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Start Date</th>
+                                <th>Duration</th>
+                                <th>Invested</th>
+                                <th>Profit</th>
+                                <th>ROI</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-12-15</td>
+                                <td>90 Days</td>
+                                <td>250,000.00</td>
+                                <td class="profit positive">+45,000.00</td>
+                                <td class="roi positive">+18.00%</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>2025-11-20</td>
+                                <td>60 Days</td>
+                                <td>150,000.00</td>
+                                <td class="profit positive">+18,000.00</td>
+                                <td class="roi positive">+12.00%</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr class="active-row">
+                                <td>2026-01-01</td>
+                                <td>90 Days</td>
+                                <td>500,000.00</td>
+                                <td class="profit pending">In Progress</td>
+                                <td class="roi pending">Active</td>
+                                <td><span class="status active">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="trade.html" class="nav-item active">
+                <span class="nav-icon">📈</span>
+                <span>Trade</span>
+            </a>
+            <a href="transfer.html" class="nav-item">
+                <span class="nav-icon">↔️</span>
+                <span>Transfer</span>
+            </a>
+            <a href="account.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span>Account</span>
+            </a>
+        </nav>
+
+        <!-- Limit Reached Tooltip -->
+        <div id="limit-tooltip" class="limit-tooltip" style="display: none;">
+            Your maximum amount already invested.<br>
+            When last returns would receive then you can subscribe any further plan.
+        </div>
+    </div>
+
+    <script>
+        // Show tooltip when clicking any "Invest Now" button
+        document.querySelectorAll('.btn-invest').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent any default action
+
+                const tooltip = document.getElementById('limit-tooltip');
+                const rect = btn.getBoundingClientRect();
+
+                tooltip.style.display = 'block';
+                tooltip.style.left = `${rect.left + window.scrollX + (rect.width / 2) - (tooltip.offsetWidth / 2)}px`;
+                tooltip.style.top = `${rect.top + window.scrollY - tooltip.offsetHeight - 15}px`; // Above button
+
+                // Auto-hide after 6 seconds
+                setTimeout(() => {
+                    tooltip.style.display = 'none';
+                }, 6000);
+            });
+        });
+
+        // Hide tooltip when clicking anywhere else
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.btn-invest')) {
+                document.getElementById('limit-tooltip').style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- Limit Reached Popup (centered & professional) -->
+<div id="limit-popup" class="limit-popup" style="display: none;">
+    <div class="popup-arrow"></div>
+    <div class="popup-content">
+        Your maximum amount already invested.<br>
+        When last returns would receive then you can subscribe any further plan.
+    </div>
+</div>
+
+
+
+    
+</body>
+
+
+
+
+</html>

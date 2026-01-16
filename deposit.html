@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit - KBG Crypto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Toast for copy feedback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.history.back()">←</button>
+            </div>
+            <div class="header-center">Deposit</div>
+        </header>
+
+        <main class="deposit-content">
+            <!-- Balance Overview -->
+            <section class="deposit-balance glass-card">
+                <div class="balance-info">
+                    <span class="label">Available Balance</span>
+                    <div class="amount" id="balance-amount">7,660,222.00 USDT</div>
+                </div>
+                <div class="vip-info">
+                    <span class="vip-label">VIP6 Daily Deposit Limit</span>
+                    <span class="vip-value">Unlimited</span>
+                </div>
+            </section>
+
+            <!-- Deposit Methods -->
+            <section class="deposit-methods">
+                <h2 class="section-title">Select Deposit Method</h2>
+                
+                <div class="methods-grid">
+                    <div class="method-card active" data-network="trc20">
+                        <div class="method-icon">USDT</div>
+                        <div class="method-name">TRC20</div>
+                        <div class="method-desc">Fast & Low Fees</div>
+                    </div>
+
+                    <div class="method-card" data-network="erc20">
+                        <div class="method-icon">USDT</div>
+                        <div class="method-name">ERC20</div>
+                        <div class="method-desc">Ethereum Network</div>
+                    </div>
+
+                    <div class="method-card" data-network="btc">
+                        <div class="method-icon">BTC</div>
+                        <div class="method-name">Bitcoin</div>
+                        <div class="method-desc">Most Secure</div>
+                    </div>
+
+                    <div class="method-card disabled">
+                        <div class="method-icon">💳</div>
+                        <div class="method-name">Bank Card</div>
+                        <div class="method-desc">Coming Soon</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Deposit Details -->
+            <section class="deposit-details glass-card" id="deposit-details" style="display: none;">
+                <h3 class="details-title">Deposit via <span id="selected-network">TRC20</span></h3>
+
+                <div class="qr-section">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a" alt="Deposit QR Code">
+                    </div>
+                    <div class="wallet-info">
+                        <label>Wallet Address</label>
+                        <div class="wallet-address" id="wallet-address">
+                            TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a
+                        </div>
+                        <button class="btn-copy" onclick="copyWallet()">Copy Address</button>
+                    </div>
+                </div>
+
+                <div class="deposit-instructions">
+                    <h4>Important Instructions</h4>
+                    <ul>
+                        <li>Send only <strong>USDT</strong> to this address on <strong>TRC20 network</strong></li>
+                        <li>Minimum deposit: <strong>50 USDT</strong></li>
+                        <li>Deposits are credited automatically within 5–30 minutes</li>
+                        <li>Do NOT send from exchange withdrawal address</li>
+                        <li>Wrong network = permanent loss of funds</li>
+                    </ul>
+                </div>
+
+                <div class="deposit-amount-input">
+                    <label>Expected Deposit Amount (USDT)</label>
+                    <input type="number" id="deposit-amount" placeholder="Enter amount" min="50" step="0.01" class="deposit-input">
+                    <button class="btn-deposit" onclick="showConfirmationModal()">I have sent the funds</button>
+                </div>
+            </section>
+
+            <!-- Recent Deposits -->
+            <section class="recent-deposits glass-card">
+                <h3 class="section-title">Recent Deposits</h3>
+                <div class="deposits-list">
+                    <div class="deposit-item">
+                        <div class="deposit-date">Jan 13, 2026 14:32</div>
+                        <div class="deposit-info">
+                            <span class="deposit-amount positive">+85,000.00 USDT</span>
+                            <span class="deposit-method">TRC20</span>
+                        </div>
+                        <span class="status completed">Completed</span>
+                    </div>
+                    <div class="deposit-item">
+                        <div class="deposit-date">Jan 11, 2026 09:15</div>
+                        <div class="deposit-info">
+                            <span class="deposit-amount positive">+250,000.00 USDT</span>
+                            <span class="deposit-method">ERC20</span>
+                        </div>
+                        <span class="status completed">Completed</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="trade.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span>Trade</span>
+            </a>
+            <a href="transfer.html" class="nav-item">
+                <span class="nav-icon">💸</span>
+                <span>Transfer</span>
+            </a>
+            <a href="account.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span>My Account</span>
+            </a>
+        </nav>
+
+        <!-- Deposit Confirmation Modal -->
+        <div id="confirmation-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content glass-card">
+                <h2 class="modal-title">Confirm Your Deposit</h2>
+                
+                <div class="modal-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">Network</span>
+                        <span class="summary-value" id="modal-network">TRC20</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Amount</span>
+                        <span class="summary-value" id="modal-amount">0.00 USDT</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Wallet Address</span>
+                        <span class="summary-value wallet" id="modal-wallet">TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a</span>
+                    </div>
+                </div>
+
+                <div class="modal-warning">
+                    <strong>Warning:</strong> Please ensure you've sent the exact amount to the displayed address on the selected network. Wrong network or amount may result in permanent loss of funds.
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                    <button class="btn-confirm" onclick="confirmDeposit()">Yes, I Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        // Copy wallet address
+        function copyWallet() {
+            const address = document.getElementById('wallet-address').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                toastr.success('Wallet address copied to clipboard!', '', { timeOut: 2000 });
+            }).catch(() => {
+                toastr.error('Failed to copy');
+            });
+        }
+
+        // Switch active method
+        document.querySelectorAll('.method-card:not(.disabled)').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.method-card').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const network = this.getAttribute('data-network').toUpperCase();
+                document.getElementById('selected-network').textContent = network;
+                document.getElementById('deposit-details').style.display = 'block';
+            });
+        });
+
+        // Show confirmation modal
+        function showConfirmationModal() {
+            const amountInput = document.getElementById('deposit-amount');
+            const amount = parseFloat(amountInput.value) || 0;
+
+            if (amount < 50) {
+                toastr.warning('Minimum deposit is 50 USDT');
+                return;
+            }
+
+            // Fill modal data
+            document.getElementById('modal-network').textContent = document.getElementById('selected-network').textContent;
+            document.getElementById('modal-amount').textContent = amount.toFixed(2) + ' USDT';
+            document.getElementById('modal-wallet').textContent = document.getElementById('wallet-address').textContent;
+
+            // Show modal
+            document.getElementById('confirmation-modal').style.display = 'flex';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+        }
+
+        // Confirm deposit (placeholder - add real logic here)
+        function confirmDeposit() {
+            const amount = document.getElementById('modal-amount').textContent;
+            toastr.success(`Deposit confirmation submitted: ${amount}`);
+            closeModal();
+            // Here you would normally send request to backend/Supabase
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('confirmation-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>

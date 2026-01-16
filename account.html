@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - KBG Crypto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-center">My Account</div>
+            <div class="header-right">
+                <button class="settings-btn">⚙️</button>
+            </div>
+        </header>
+
+        <main class="account-content">
+            <!-- Profile -->
+            <section class="account-profile glass-card">
+                <div class="profile-avatar">N</div>
+                <div class="profile-info">
+                    <h2 id="account-username">cek622</h2>
+                    <span class="vip-badge" id="account-vip">VIP6</span>
+                </div>
+            </section>
+
+            <!-- Balance -->
+            <section class="account-balance glass-card">
+                <div class="balance-item main-balance">
+                    <span class="balance-label">My Assets (USDT)</span>
+                    <span class="balance-value" id="account-balance">1,460,222.00</span>
+                </div>
+
+                
+                <div class="balance-divider"></div>
+
+                <div class="balance-item deposit-row">
+                    <div class="deposit-info">
+                        <span class="balance-label">Deposit (USDT)</span>
+                        <span class="balance-value" id="account-deposit">84,497.5</span>
+                    </div>
+                    <button class="btn-refund">Apply for Refund</button>
+                </div>
+            </section>
+
+            <!-- Quick Actions – Aligned like Trade page -->
+            <section class="quick-actions">
+                <div class="action-grid">
+                    <div class="action-card" onclick="window.location.href='deposit.html'">
+                        <span class="action-icon">💳</span>
+                        <span>Deposit</span>
+                    </div>
+                    <div class="action-card" onclick="window.location.href='withdraw.html'">
+                        <span class="action-icon">🏦</span>
+                        <span>Withdraw</span>
+                    </div>
+                    <div class="action-card" onclick="window.location.href='transfer.html'">
+                        <span class="action-icon">💸</span>
+                        <span>Internal Transfer</span>
+                    </div>
+                    <div class="action-card" onclick="window.location.href='membership.html'">
+                        <span class="action-icon">💎</span>
+                        <span>Membership Upgrade</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expandable Menu Sections -->
+            <section class="menu-section">
+                <div class="menu-item accordion" data-target="msg-notification">
+                    <span class="menu-icon">🔔</span>
+                    <span class="menu-text">Message Notification</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div id="msg-notification" class="accordion-content">
+                    <div class="accordion-body">
+                        <h4>Recent Notifications</h4>
+                        <ul>
+                            <li><strong>Today 09:12</strong> - Your VIP6 daily limit has been reset</li>
+                            <li><strong>Yesterday</strong> - Deposit of 50,000 USDT confirmed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-item accordion" data-target="quick-buy">
+                    <span class="menu-icon">💰</span>
+                    <span class="menu-text">Quick Buy</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div id="quick-buy" class="accordion-content">
+                    <div class="accordion-body">
+                        <h4>Instant Purchase</h4>
+                        <p>Buy crypto with one tap:</p>
+                        <div class="quick-buy-grid">
+                            <button class="quick-btn">BTC</button>
+                            <button class="quick-btn">ETH</button>
+                            <button class="quick-btn">USDT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item accordion" data-target="help-center">
+                    <span class="menu-icon">❓</span>
+                    <span class="menu-text">Help Center</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div id="help-center" class="accordion-content">
+                    <div class="accordion-body">
+                        <h4>Support & FAQ</h4>
+                        <p>Common questions and quick answers.</p>
+                        <a href="#" class="help-link">View Full Help Center →</a>
+                    </div>
+                </div>
+
+                <div class="menu-item accordion" data-target="language-switch">
+                    <span class="menu-icon">💬</span>
+                    <span class="menu-text">Language Switch</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div id="language-switch" class="accordion-content">
+                    <div class="accordion-body">
+                        <h4>Choose Language</h4>
+                        <div class="lang-options">
+                            <button class="lang-btn active">English</button>
+                            <button class="lang-btn">中文</button>
+                            <button class="lang-btn">Español</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transaction History Section -->
+            <section class="transaction-history glass-card">
+                <div class="history-header">
+                    <h3>Transaction History</h3>
+                    <span class="history-filter">Last 30 days</span>
+                </div>
+
+                <div class="history-table-wrapper">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2026-01-13 14:32</td>
+                                <td>Deposit</td>
+                                <td class="amount positive">+85,000.00 USDT</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-11 09:15</td>
+                                <td>Internal Transfer</td>
+                                <td class="amount negative">-25,000.00 USDT</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-09 22:47</td>
+                                <td>Withdraw</td>
+                                <td class="amount negative">-120,000.00 USDT</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-07 11:05</td>
+                                <td>Membership Upgrade</td>
+                                <td class="amount negative">-100,000.00 USDT</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-04 03:18</td>
+                                <td>Deposit</td>
+                                <td class="amount positive">+450,000.00 USDT</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-01 17:40</td>
+                                <td>Trade Profit</td>
+                                <td class="amount positive">+18,750.00 USDT</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="history-footer">
+                    <button class="btn-load-more">Load More Transactions</button>
+                </div>
+            </section>
+
+            <button class="btn-switch-account" onclick="logout()">Switch to another account</button>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="trade.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span>Trade</span>
+            </a>
+            <a href="transfer.html" class="nav-item">
+                <span class="nav-icon">💸</span>
+                <span>Transfer</span>
+            </a>
+            <a href="account.html" class="nav-item active">
+                <span class="nav-icon">👤</span>
+                <span>My Account</span>
+            </a>
+        </nav>
+    </div>
+
+    <script type="module" src="account.js"></script>
+    <script type="module" src="config.js"></script>
+
+    <!-- Accordion JS (for menu sections) -->
+    <script>
+        document.querySelectorAll('.accordion').forEach(item => {
+            item.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                const arrow = this.querySelector('.menu-arrow');
+
+                document.querySelectorAll('.accordion-content.active').forEach(el => {
+                    if (el !== content) {
+                        el.classList.remove('active');
+                        el.style.maxHeight = null;
+                        const otherArrow = el.previousElementSibling?.querySelector('.menu-arrow');
+                        if (otherArrow) otherArrow.textContent = '▼';
+                    }
+                });
+
+                if (content.classList.contains('active')) {
+                    content.classList.remove('active');
+                    content.style.maxHeight = null;
+                    arrow.textContent = '▼';
+                } else {
+                    content.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    arrow.textContent = '▲';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
