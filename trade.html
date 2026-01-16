@@ -8,9 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
 </head>
 <body>
+    <div class="background-particles"></div>
+
     <div class="app-container">
-        <!-- Header -->
-        <header class="app-header glass-header">
+        <!-- Premium Header -->
+        <header class="app-header premium-header">
             <div class="header-left">
                 <button class="back-btn" onclick="window.history.back()">←</button>
             </div>
@@ -18,19 +20,19 @@
         </header>
 
         <main class="trade-main">
-            <!-- Balance & VIP Status -->
-            <section class="trade-balance glass-card premium-card">
+            <!-- Balance & VIP Status – Luxurious Card -->
+            <section class="trade-balance premium-card glass-glow">
                 <div class="balance-header">
                     <div class="user-info">
                         <span class="greeting">Welcome back,</span>
                         <span class="username">cek622</span>
-                        <span class="vip-badge vip6">VIP6</span>
+                        <span class="vip-badge vip6 glowing-vip">VIP6</span>
                     </div>
                 </div>
 
                 <div class="balance-display">
                     <div class="label">Available Balance</div>
-                    <div class="big-balance">7,660,222.00 <span class="currency">USDT</span></div>
+                    <div class="big-balance gradient-text">7,660,222.00 <span class="currency">USDT</span></div>
                 </div>
 
                 <div class="limits-row">
@@ -45,10 +47,10 @@
                 </div>
             </section>
 
-            <!-- Trading Interface (Luxury) -->
-            <section class="trading-interface glass-card premium-card">
+            <!-- Trading Interface – Premium Glass Panel -->
+            <section class="trading-interface premium-card glass-glow">
                 <div class="trading-header">
-                    <h2>Spot Trading</h2>
+                    <h2 class="gradient-title">Spot Trading</h2>
                     <div class="trading-tabs">
                         <button class="tab-btn active">Spot</button>
                         <button class="tab-btn">Futures</button>
@@ -66,27 +68,27 @@
                     <div class="order-form">
                         <div class="form-row">
                             <label>Price</label>
-                            <input type="text" class="form-input" placeholder="Market price or enter limit" />
+                            <input type="text" class="form-input premium-input" placeholder="Market price or enter limit" />
                         </div>
                         <div class="form-row">
                             <label>Amount</label>
-                            <input type="text" class="form-input" placeholder="0.00 BTC" />
+                            <input type="text" class="form-input premium-input" placeholder="0.00 BTC" />
                         </div>
                         <div class="form-row total-row">
                             <label>Total</label>
-                            <div class="total-value">0.00 USDT</div>
+                            <div class="total-value gradient-text">0.00 USDT</div>
                         </div>
 
                         <div class="action-buttons">
-                            <button class="btn-buy">Buy BTC</button>
-                            <button class="btn-sell">Sell BTC</button>
+                            <button class="btn-buy premium-btn">Buy BTC</button>
+                            <button class="btn-sell premium-btn">Sell BTC</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Bottom Nav -->
-            <nav class="bottom-nav glass-nav">
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav premium-nav">
                 <a href="home.html" class="nav-item">
                     <span>Dashboard</span>
                 </a>
@@ -102,5 +104,16 @@
             </nav>
         </main>
     </div>
+
+    <!-- Optional: Quick JS for tab switching (add if needed) -->
+    <script>
+        // Simple tab active state (optional enhancement)
+        document.querySelectorAll('.tab-btn, .order-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
