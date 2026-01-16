@@ -3,64 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investo - Dashboard</title>
+    <title>KBG Crypto - Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <!-- Header -->
         <header class="app-header glass-header">
-            <div class="header-left">
-                <div class="logo-icon">Inv</div>
-            </div>
-            <div class="header-center">
-                <span class="platform-name">Investo</span>
+            <div class="logo-container">
+                <div class="logo-glow"></div>
+                <span class="platform-name">KBG Crypto</span>
             </div>
             <div class="header-right">
-                <button class="user-btn">
-                    <span class="user-avatar">N</span>
+                <div class="user-profile">
+                    <div class="user-avatar">N</div>
                     <span class="user-name">cek622</span>
-                </button>
+                </div>
             </div>
         </header>
 
-        <!-- News Ticker -->
-        <div class="news-ticker">
-            <div class="ticker-content">
-                <span class="ticker-icon">📢</span>
-                <span class="ticker-text">
-                    Welcome to Investo Crypto • VIP6 Daily Limit: 5,000,000 USDT • New Trading Pairs Added: SOL/USDT, XRP/USDT • 24/7 Support Available • Trade Securely & Earn Rewards • 
-                </span>
-                <span class="ticker-text">
-                    Welcome to Investo Crypto • VIP6 Daily Limit: 5,000,000 USDT • New Trading Pairs Added: SOL/USDT, XRP/USDT • 24/7 Support Available • Trade Securely & Earn Rewards • 
-                </span>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="gradient-text">Welcome to the Future of Finance</h1>
+                <p class="hero-subtitle">Trade, Invest, and Secure Your Assets with Institutional-Grade Security</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">$1.2B+</span>
+                        <span class="stat-label">24h Volume</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">2.4M+</span>
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">99.99%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="hero-bg-gradient"></div>
+        </section>
 
         <!-- Quick Actions -->
         <section class="quick-actions">
             <div class="action-grid">
-                <a href="deposit.html" class="action-card animate-pulse-slow">
-                    <span class="action-icon">💰</span>
-                    <span class="action-label">Deposit</span>
+                <a href="deposit.html" class="action-card">
+                    <div class="action-icon">Deposit</div>
+                    <span>Deposit</span>
                 </a>
-                <a href="withdraw.html" class="action-card animate-pulse-slow">
-                    <span class="action-icon">💸</span>
-                    <span class="action-label">Withdraw</span>
+                <a href="withdraw.html" class="action-card">
+                    <div class="action-icon">Withdraw</div>
+                    <span>Withdraw</span>
                 </a>
-                <a href="transfer.html" class="action-card animate-pulse-slow">
-                    <span class="action-icon">↔️</span>
-                    <span class="action-label">Transfer</span>
+                <a href="transfer.html" class="action-card">
+                    <div class="action-icon">Transfer</div>
+                    <span>Transfer</span>
                 </a>
-                <a href="membership.html" class="action-card animate-pulse-slow">
-                    <span class="action-icon">⭐</span>
-                    <span class="action-label">Upgrade VIP</span>
+                <a href="membership.html" class="action-card">
+                    <div class="action-icon">Upgrade</div>
+                    <span>Upgrade VIP</span>
                 </a>
             </div>
         </section>
 
-        <!-- Live Market Overview -->
+        <!-- Live Market Prices -->
         <section class="market-overview glass-card">
             <div class="market-header">
                 <h2>Live Market Prices</h2>
@@ -68,93 +76,52 @@
             </div>
 
             <div class="crypto-cards">
-                <div class="crypto-card" id="btc-card">
+                <div class="crypto-card">
                     <div class="crypto-symbol">BTC/USDT</div>
-                    <div class="crypto-price" id="btc-price">95,521.16</div>
-                    <div class="crypto-change" id="btc-change">-0.01%</div>
+                    <div class="crypto-price" id="btc-price">95,839.26</div>
+                    <div class="crypto-change negative">-0.05%</div>
                 </div>
-                <div class="crypto-card" id="eth-card">
+                <div class="crypto-card">
                     <div class="crypto-symbol">ETH/USDT</div>
-                    <div class="crypto-price" id="eth-price">3,338.70</div>
-                    <div class="crypto-change" id="eth-change">+0.12%</div>
+                    <div class="crypto-price" id="eth-price">3,332.26</div>
+                    <div class="crypto-change positive">+0.24%</div>
                 </div>
-                <div class="crypto-card" id="doge-card">
+                <div class="crypto-card">
                     <div class="crypto-symbol">DOGE/USDT</div>
-                    <div class="crypto-price" id="doge-price">0.149194</div>
-                    <div class="crypto-change" id="doge-change">-0.04%</div>
+                    <div class="crypto-price" id="doge-price">0.148289</div>
+                    <div class="crypto-change negative">-0.21%</div>
                 </div>
             </div>
         </section>
 
-        <!-- Full Market List -->
-        <section class="market-section glass-card">
-            <h2 class="section-title">USDT Market Overview</h2>
-            <div class="market-table-header">
-                <span>Pair</span>
-                <span>Price</span>
-                <span>24h Change</span>
-            </div>
-            <div class="market-list" id="market-list"></div>
-        </section>
-
-        <!-- Bottom Navigation -->
+        <!-- Bottom Navigation – Professional & Emoji-Free -->
         <nav class="bottom-nav glass-nav">
             <a href="home.html" class="nav-item active">
-                <span class="nav-icon">🏠</span>
                 <span>Dashboard</span>
             </a>
             <a href="trade.html" class="nav-item">
-                <span class="nav-icon">📈</span>
                 <span>Trade</span>
             </a>
             <a href="transfer.html" class="nav-item">
-                <span class="nav-icon">↔️</span>
                 <span>Transfer</span>
             </a>
             <a href="account.html" class="nav-item">
-                <span class="nav-icon">👤</span>
                 <span>Account</span>
             </a>
         </nav>
     </div>
 
-    <script type="module" src="home.js"></script>
-
-    <!-- Live Price Animation Script -->
     <script>
-        // Enhanced price update with flash animation
-        function updatePriceWithAnimation(elementId, newPrice, changePercent) {
-            const priceEl = document.getElementById(elementId);
-            const changeEl = document.getElementById(elementId.replace('price', 'change'));
-
-            // Update values
-            priceEl.textContent = newPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            changeEl.textContent = (changePercent >= 0 ? '+' : '') + changePercent.toFixed(2) + '%';
-
-            // Set color & flash animation
-            const isPositive = changePercent >= 0;
-            changeEl.className = 'crypto-change ' + (isPositive ? 'positive' : 'negative');
-
-            // Flash effect
-            priceEl.classList.add('price-flash');
-            changeEl.classList.add('price-flash');
-            setTimeout(() => {
-                priceEl.classList.remove('price-flash');
-                changeEl.classList.remove('price-flash');
-            }, 800);
+        // Optional: Simple live price pulse animation simulation
+        function pulsePrice(element) {
+            element.classList.add('price-pulse');
+            setTimeout(() => element.classList.remove('price-pulse'), 800);
         }
 
-        // Simulate live updates (replace with real API later)
-        function simulateLiveUpdate() {
-            const change = (Math.random() - 0.5) * 0.8; // -0.4% to +0.4%
-            const btcPrice = parseFloat(document.getElementById('btc-price').textContent.replace(/,/g, '')) * (1 + change/100);
-            updatePriceWithAnimation('btc-price', btcPrice, change);
-
-            // You can add ETH, DOGE etc. similarly...
-        }
-
-        // Run every 3 seconds
-        setInterval(simulateLiveUpdate, 3000);
+        // Call every few seconds (simulation)
+        setInterval(() => {
+            document.querySelectorAll('.crypto-price').forEach(pulsePrice);
+        }, 6000);
     </script>
 </body>
 </html>
