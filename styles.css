@@ -6931,3 +6931,147 @@ body {
         flex-direction: column;
     }
 }
+
+
+/* ──────────────────────────────────────────────
+   TRADE PAGE – Investment Plans + Expired Popup
+   ────────────────────────────────────────────── */
+
+.investment-header h2 {
+    font-size: 2rem;
+    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.investment-header p {
+    font-size: 1.2rem;
+    color: #d1c4ff;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.plan-card {
+    background: rgba(30, 26, 70, 0.65);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    border-radius: 24px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(124, 58, 237, 0.35);
+}
+
+.plan-card.recommended {
+    border-color: #fbbf24;
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.3);
+}
+
+.plan-badge {
+    background: rgba(124, 58, 237, 0.25);
+    color: #c4b5fd;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.recommended-badge {
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    color: #1a0f2e;
+}
+
+.plan-profit {
+    margin-bottom: 2rem;
+}
+
+.profit-rate {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #34d399, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+}
+
+.profit-desc {
+    font-size: 1rem;
+    color: #a0a0ff;
+    margin-top: 0.5rem;
+}
+
+.plan-benefits {
+    list-style: none;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.plan-benefits li {
+    margin-bottom: 1rem;
+    color: #d1c4ff;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.plan-benefits li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #34d399;
+}
+
+.btn-invest {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-invest:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+}
+
+/* Expired Popup */
+.modal-message {
+    font-size: 1.1rem;
+    color: #fecaca;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.btn-upgrade {
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    color: #1a0f2e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .big-balance {
+        font-size: 2.2rem;
+    }
+}
+
