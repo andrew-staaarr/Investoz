@@ -6480,3 +6480,105 @@ body {
         font-size: 0.85rem;
     }
 }
+/* ──────────────────────────────────────────────
+   PREMIUM 2026 BUTTON ANIMATION – Glassmorphic Neon Glow + Shine Sweep
+   Recommended Style (Luxury Crypto / Web3 Level)
+   ────────────────────────────────────────────── */
+
+.premium-btn,
+.btn-purchase,
+.btn-renew,
+.btn-payment-done,
+.btn-confirm,
+.btn-close-success,
+.btn-copy,
+.btn-max,
+.btn-deposit,
+.btn-withdraw,
+.btn-upgrade {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6b48ff, #9f7aea, #c084fc);
+    color: white;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    cursor: pointer;
+    transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 
+        0 6px 20px rgba(107, 72, 255, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Hover: Lift + Intense Glow + Shine Sweep */
+.premium-btn:hover,
+.btn-purchase:hover,
+.btn-renew:hover,
+.btn-payment-done:hover,
+.btn-confirm:hover,
+.btn-close-success:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 
+        0 20px 50px rgba(107, 72, 255, 0.55),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Shine sweep effect (liquid glass shine) */
+.premium-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.45),
+        transparent
+    );
+    transition: left 0.8s ease;
+    pointer-events: none;
+}
+
+.premium-btn:hover::before {
+    left: 100%;
+}
+
+/* Subtle inner glow on hover */
+.premium-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    box-shadow: inset 0 0 25px rgba(124,58,237,0.45);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.premium-btn:hover::after {
+    opacity: 0.6;
+}
+
+/* Active / Click feedback */
+.premium-btn:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 8px 25px rgba(107, 72, 255, 0.45);
+}
+
+/* Optional: Disabled state */
+.premium-btn:disabled,
+.premium-btn[disabled] {
+    background: #4b5563;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.premium-btn:disabled::before,
+.premium-btn:disabled::after {
+    display: none;
+}
