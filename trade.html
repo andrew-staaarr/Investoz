@@ -47,45 +47,79 @@
                 </div>
             </section>
 
-            <!-- Trading Interface – Premium Glass Panel -->
-            <section class="trading-interface premium-card glass-glow">
-                <div class="trading-header">
-                    <h2 class="gradient-title">Spot Trading</h2>
-                    <div class="trading-tabs">
-                        <button class="tab-btn active">Spot</button>
-                        <button class="tab-btn">Futures</button>
-                        <button class="tab-btn">Margin</button>
-                    </div>
+            <!-- Investment Plans – Premium Glass Panel -->
+            <section class="investment-plans premium-card glass-glow">
+                <div class="investment-header">
+                    <h2 class="gradient-title">Monthly Profit Investment Plans</h2>
+                    <p class="hero-subtitle">Choose your plan and start earning high returns today</p>
                 </div>
 
-                <div class="order-panel">
-                    <div class="order-type-tabs">
-                        <button class="order-tab active">Limit</button>
-                        <button class="order-tab">Market</button>
-                        <button class="order-tab">Stop-Limit</button>
+                <div class="plans-grid">
+                    <!-- Plan 1 – Basic -->
+                    <div class="plan-card premium-plan">
+                        <div class="plan-badge">Basic Plan</div>
+                        <div class="plan-profit">
+                            <span class="profit-rate">8% Monthly</span>
+                            <span class="profit-desc">Stable growth for beginners</span>
+                        </div>
+                        <ul class="plan-benefits">
+                            <li>Minimum Investment: 1,000 USDT</li>
+                            <li>Maximum Investment: 10,000 USDT</li>
+                            <li>Daily Withdrawal: Up to 500 USDT</li>
+                            <li>Risk Level: Low</li>
+                            <li>Support: Standard 24/7</li>
+                        </ul>
+                        <button class="btn-invest premium-btn" onclick="showExpiredPopup()">Invest Now</button>
                     </div>
 
-                    <div class="order-form">
-                        <div class="form-row">
-                            <label>Price</label>
-                            <input type="text" class="form-input premium-input" placeholder="Market price or enter limit" />
+                    <!-- Plan 2 – Pro -->
+                    <div class="plan-card premium-plan recommended">
+                        <div class="plan-badge recommended-badge">Pro Plan</div>
+                        <div class="plan-profit">
+                            <span class="profit-rate">15% Monthly</span>
+                            <span class="profit-desc">Balanced returns with advanced tools</span>
                         </div>
-                        <div class="form-row">
-                            <label>Amount</label>
-                            <input type="text" class="form-input premium-input" placeholder="0.00 BTC" />
-                        </div>
-                        <div class="form-row total-row">
-                            <label>Total</label>
-                            <div class="total-value gradient-text">0.00 USDT</div>
-                        </div>
+                        <ul class="plan-benefits">
+                            <li>Minimum Investment: 10,000 USDT</li>
+                            <li>Maximum Investment: 50,000 USDT</li>
+                            <li>Daily Withdrawal: Up to 2,500 USDT</li>
+                            <li>Risk Level: Medium</li>
+                            <li>Support: Priority 24/7 + Analytics</li>
+                        </ul>
+                        <button class="btn-invest premium-btn" onclick="showExpiredPopup()">Invest Now</button>
+                    </div>
 
-                        <div class="action-buttons">
-                            <button class="btn-buy premium-btn">Buy BTC</button>
-                            <button class="btn-sell premium-btn">Sell BTC</button>
+                    <!-- Plan 3 – Elite -->
+                    <div class="plan-card premium-plan">
+                        <div class="plan-badge">Elite Plan</div>
+                        <div class="plan-profit">
+                            <span class="profit-rate">25% Monthly</span>
+                            <span class="profit-desc">High-yield for experienced investors</span>
                         </div>
+                        <ul class="plan-benefits">
+                            <li>Minimum Investment: 50,000 USDT</li>
+                            <li>Maximum Investment: Unlimited</li>
+                            <li>Daily Withdrawal: Up to 10,000 USDT</li>
+                            <li>Risk Level: High</li>
+                            <li>Support: VIP 24/7 + Personal Manager</li>
+                        </ul>
+                        <button class="btn-invest premium-btn" onclick="showExpiredPopup()">Invest Now</button>
                     </div>
                 </div>
             </section>
+
+            <!-- Expired Popup -->
+            <div id="expired-popup" class="modal-overlay" style="display: none;">
+                <div class="modal-content glass-glow">
+                    <button class="modal-close" onclick="closeExpiredPopup()">×</button>
+                    <h2 class="modal-title gradient-title">Plan Expired</h2>
+                    <p class="modal-message">Increase your plan first. Your current plan is expired.</p>
+                    <div class="modal-actions">
+                        <button class="btn-upgrade premium-btn" onclick="window.location.href='membership.html'">Upgrade Plan</button>
+                        <button class="btn-cancel" onclick="closeExpiredPopup()">Close</button>
+                    </div>
+                </div>
+            </div>
 
             <!-- Bottom Navigation -->
             <nav class="bottom-nav premium-nav">
@@ -105,15 +139,16 @@
         </main>
     </div>
 
-    <!-- Optional: Quick JS for tab switching (add if needed) -->
     <script>
-        // Simple tab active state (optional enhancement)
-        document.querySelectorAll('.tab-btn, .order-tab').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
+        // Show Expired Popup
+        function showExpiredPopup() {
+            document.getElementById('expired-popup').style.display = 'flex';
+        }
+
+        // Close Expired Popup
+        function closeExpiredPopup() {
+            document.getElementById('expired-popup').style.display = 'none';
+        }
     </script>
 </body>
 </html>
