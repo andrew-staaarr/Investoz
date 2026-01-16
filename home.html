@@ -8,132 +8,152 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-particles"></div>
+
     <div class="app-container">
-        <header class="app-header glass-header">
-            <div class="header-left">
-                <div class="logo-icon">KBG</div>
-            </div>
-            <div class="header-center">
+        <!-- Premium Header -->
+        <header class="app-header premium-header">
+            <div class="logo-glow-container">
+                <div class="logo-glow"></div>
                 <span class="platform-name">KBG Crypto</span>
             </div>
-            <div class="header-right">
-                <button class="language-btn">EN ▼</button>
+            <div class="user-profile">
+                <div class="user-avatar">N</div>
+                <span class="user-name">cek622</span>
             </div>
         </header>
 
-        <!-- Quick Actions -->
-        <section class="quick-actions">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="gradient-title">Next Generation Crypto Platform</h1>
+                <p class="hero-subtitle">Institutional-grade security • Lightning-fast execution • Maximum privacy</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-value">$1.8B+</span>
+                        <span class="stat-label">24h Volume</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">3.1M+</span>
+                        <span class="stat-label">Verified Users</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">99.99%</span>
+                        <span class="stat-label">Uptime SLA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions – Premium Style -->
+        <section class="quick-actions premium-actions">
             <div class="action-grid">
-                <a href="deposit.html" class="action-card">
-                    <span class="action-icon">🏦</span>
-                    <span class="action-label">Deposit Funds</span>
+                <a href="deposit.html" class="action-card premium-card">
+                    <div class="action-icon">🏦</div>
+                    <span>Deposit</span>
                 </a>
-                <a href="withdraw.html" class="action-card">
-                    <span class="action-icon">💰</span>
-                    <span class="action-label">Withdraw Funds</span>
+                <a href="withdraw.html" class="action-card premium-card">
+                    <div class="action-icon">💸</div>
+                    <span>Withdraw</span>
                 </a>
-                <a href="transfer.html" class="action-card">
-                    <span class="action-icon">↔️</span>
-                    <span class="action-label">Internal Transfer</span>
+                <a href="transfer.html" class="action-card premium-card">
+                    <div class="action-icon">🔄</div>
+                    <span>Transfer</span>
                 </a>
-                <a href="membership.html" class="action-card">
-                    <span class="action-icon">⭐</span>
-                    <span class="action-label">VIP Membership</span>
+                <a href="membership.html" class="action-card premium-card">
+                    <div class="action-icon">⭐</div>
+                    <span>Upgrade VIP</span>
                 </a>
             </div>
         </section>
 
-        <!-- Live Market Prices -->
-        <section class="market-overview glass-card">
+        <!-- Live Market – Luxurious Cards -->
+        <section class="market-overview premium-market">
             <div class="market-header">
-                <h2>Live Market Prices</h2>
+                <h2>Live Market Overview</h2>
                 <span class="market-update">Real-time • Updated every 2s</span>
             </div>
 
             <div class="crypto-cards">
-                <div class="crypto-card" id="btc-card">
+                <div class="crypto-card premium-crypto" id="btc-card">
                     <div class="crypto-symbol">BTC/USDT</div>
                     <div class="crypto-price" id="btc-price">Loading...</div>
-                    <div class="crypto-change" id="btc-change">0.00%</div>
+                    <div class="crypto-change" id="btc-change">—</div>
                 </div>
-                <div class="crypto-card" id="eth-card">
+                <div class="crypto-card premium-crypto" id="eth-card">
                     <div class="crypto-symbol">ETH/USDT</div>
                     <div class="crypto-price" id="eth-price">Loading...</div>
-                    <div class="crypto-change" id="eth-change">0.00%</div>
+                    <div class="crypto-change" id="eth-change">—</div>
                 </div>
-                <div class="crypto-card" id="doge-card">
+                <div class="crypto-card premium-crypto" id="doge-card">
                     <div class="crypto-symbol">DOGE/USDT</div>
                     <div class="crypto-price" id="doge-price">Loading...</div>
-                    <div class="crypto-change" id="doge-change">0.00%</div>
+                    <div class="crypto-change" id="doge-change">—</div>
                 </div>
             </div>
         </section>
 
-        <!-- USDT Market Overview -->
-        <section class="market-section glass-card">
-            <h2 class="section-title">USDT Market Overview</h2>
-            <div class="market-table-header">
-                <span>Pair</span>
-                <span>Price</span>
-                <span>24h Change</span>
-            </div>
-            <div class="market-list" id="market-list"></div>
-        </section>
-
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav">
-            <a href="home.html" class="nav-item">
-                <span class="nav-icon">🏠</span>
+        <!-- Bottom Navigation – Clean & Professional -->
+        <nav class="bottom-nav premium-nav">
+            <a href="home.html" class="nav-item active">
                 <span>Dashboard</span>
             </a>
             <a href="trade.html" class="nav-item">
-                <span class="nav-icon">📈</span>
                 <span>Trade</span>
             </a>
             <a href="transfer.html" class="nav-item">
-                <span class="nav-icon">💸</span>
                 <span>Transfer</span>
             </a>
             <a href="account.html" class="nav-item">
-                <span class="nav-icon">👤</span>
-                <span>My Account</span>
+                <span>Account</span>
             </a>
         </nav>
     </div>
 
+    <!-- CoinGecko Live Price Script -->
     <script>
-        // Real-time price update with CoinGecko API
+        const COINS = [
+            { id: 'bitcoin', symbol: 'BTC', priceEl: 'btc-price', changeEl: 'btc-change' },
+            { id: 'ethereum', symbol: 'ETH', priceEl: 'eth-price', changeEl: 'eth-change' },
+            { id: 'dogecoin', symbol: 'DOGE', priceEl: 'doge-price', changeEl: 'doge-change' }
+        ];
+
         async function updatePrices() {
             try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,dogecoin&vs_currencies=usd&include_24hr_change=true');
+                const ids = COINS.map(c => c.id).join(',');
+                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`);
                 const data = await response.json();
 
-                // BTC
-                const btcPrice = data.bitcoin.usd;
-                const btcChange = data.bitcoin.usd_24h_change.toFixed(2);
-                document.getElementById('btc-price').textContent = btcPrice.toLocaleString();
-                document.getElementById('btc-change').textContent = (btcChange > 0 ? '+' : '') + btcChange + '%';
-                document.getElementById('btc-change').className = btcChange > 0 ? 'positive' : 'negative';
+                COINS.forEach(coin => {
+                    const info = data[coin.id];
+                    if (info) {
+                        const price = info.usd;
+                        const change = info.usd_24h_change || 0;
+                        const changeText = change >= 0 ? `+${change.toFixed(2)}%` : `${change.toFixed(2)}%`;
 
-                // ETH
-                const ethPrice = data.ethereum.usd;
-                const ethChange = data.ethereum.usd_24h_change.toFixed(2);
-                document.getElementById('eth-price').textContent = ethPrice.toLocaleString();
-                document.getElementById('eth-change').textContent = (ethChange > 0 ? '+' : '') + ethChange + '%';
-                document.getElementById('eth-change').className = ethChange > 0 ? 'positive' : 'negative';
+                        const priceEl = document.getElementById(coin.priceEl);
+                        const changeEl = document.getElementById(coin.changeEl);
 
-                // DOGE
-                const dogePrice = data.dogecoin.usd;
-                const dogeChange = data.dogecoin.usd_24h_change.toFixed(2);
-                document.getElementById('doge-price').textContent = dogePrice.toFixed(6);
-                document.getElementById('doge-change').textContent = (dogeChange > 0 ? '+' : '') + dogeChange + '%';
-                document.getElementById('doge-change').className = dogeChange > 0 ? 'positive' : 'negative';
-            } catch (error) {
-                console.error('Error fetching prices:', error);
+                        priceEl.textContent = price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        changeEl.textContent = changeText;
+
+                        changeEl.className = 'crypto-change ' + (change >= 0 ? 'positive' : 'negative');
+
+                        // Pulse animation
+                        priceEl.classList.add('price-pulse');
+                        changeEl.classList.add('price-pulse');
+                        setTimeout(() => {
+                            priceEl.classList.remove('price-pulse');
+                            changeEl.classList.remove('price-pulse');
+                        }, 1200);
+                    }
+                });
+            } catch (err) {
+                console.error('Price update failed:', err);
             }
         }
 
-        // Update every 2 seconds
+        // Initial fetch + every 2 seconds
         updatePrices();
         setInterval(updatePrices, 2000);
     </script>
