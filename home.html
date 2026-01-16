@@ -48,20 +48,20 @@
         <!-- Quick Actions – Premium Style -->
         <section class="quick-actions premium-actions">
             <div class="action-grid">
-                <a href="deposit.html" class="action-card premium-action">
-                    <div class="action-icon premium-icon">💰</div>
-                    <span>Deposit Funds</span>
+                <a href="deposit.html" class="action-card premium-card">
+                    <div class="action-icon">🏦</div>
+                    <span>Deposit</span>
                 </a>
-                <a href="withdraw.html" class="action-card premium-action">
-                    <div class="action-icon premium-icon">💸</div>
-                    <span>Withdraw Funds</span>
+                <a href="withdraw.html" class="action-card premium-card">
+                    <div class="action-icon">💸</div>
+                    <span>Withdraw</span>
                 </a>
-                <a href="transfer.html" class="action-card premium-action">
-                    <div class="action-icon premium-icon">↔️</div>
-                    <span>Internal Transfer</span>
+                <a href="transfer.html" class="action-card premium-card">
+                    <div class="action-icon">🔄</div>
+                    <span>Transfer</span>
                 </a>
-                <a href="membership.html" class="action-card premium-action highlight-vip">
-                    <div class="action-icon premium-icon">✨</div>
+                <a href="membership.html" class="action-card premium-card">
+                    <div class="action-icon">⭐</div>
                     <span>Upgrade VIP</span>
                 </a>
             </div>
@@ -71,7 +71,7 @@
         <section class="market-overview premium-market">
             <div class="market-header">
                 <h2>Live Market Overview</h2>
-                <span class="market-update">Real-time • Updated every 3s</span>
+                <span class="market-update">Real-time • Updated every 2s</span>
             </div>
 
             <div class="crypto-cards">
@@ -110,7 +110,7 @@
         </nav>
     </div>
 
-    <!-- CoinGecko Live Price Script – Fixed & Reliable -->
+    <!-- CoinGecko Live Price Script -->
     <script>
         const COINS = [
             { id: 'bitcoin', symbol: 'BTC', priceEl: 'btc-price', changeEl: 'btc-change' },
@@ -118,68 +118,44 @@
             { id: 'dogecoin', symbol: 'DOGE', priceEl: 'doge-price', changeEl: 'doge-change' }
         ];
 
-        const loadingText = 'Loading...';
-        const errorText = '—';
-
         async function updatePrices() {
             try {
                 const ids = COINS.map(c => c.id).join(',');
-                const response = await fetch(
-                    `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`,
-                    { cache: 'no-store' } // Force fresh data every time
-                );
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
+                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`);
                 const data = await response.json();
 
                 COINS.forEach(coin => {
                     const info = data[coin.id];
-                    const priceEl = document.getElementById(coin.priceEl);
-                    const changeEl = document.getElementById(coin.changeEl);
+                    if (info) {
+                        const price = info.usd;
+                        const change = info.usd_24h_change || 0;
+                        const changeText = change >= 0 ? `+\( {change.toFixed(2)}%` : ` \){change.toFixed(2)}%`;
 
-                    if (!info || !info.usd) {
-                        priceEl.textContent = errorText;
-                        changeEl.textContent = errorText;
-                        return;
+                        const priceEl = document.getElementById(coin.priceEl);
+                        const changeEl = document.getElementById(coin.changeEl);
+
+                        priceEl.textContent = price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        changeEl.textContent = changeText;
+
+                        changeEl.className = 'crypto-change ' + (change >= 0 ? 'positive' : 'negative');
+
+                        // Pulse animation
+                        priceEl.classList.add('price-pulse');
+                        changeEl.classList.add('price-pulse');
+                        setTimeout(() => {
+                            priceEl.classList.remove('price-pulse');
+                            changeEl.classList.remove('price-pulse');
+                        }, 1200);
                     }
-
-                    const price = info.usd;
-                    const change = info.usd_24h_change || 0;
-                    const changeText = change >= 0 ? `+\( {change.toFixed(2)}%` : ` \){change.toFixed(2)}%`;
-
-                    // Update with clean formatting
-                    priceEl.textContent = price.toLocaleString('en-US', {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    });
-                    changeEl.textContent = changeText;
-
-                    // Update color class
-                    changeEl.className = 'crypto-change ' + (change >= 0 ? 'positive' : 'negative');
-
-                    // Trigger smooth pulse animation
-                    priceEl.classList.remove('price-pulse');
-                    changeEl.classList.remove('price-pulse');
-                    void priceEl.offsetWidth; // Force reflow to restart animation
-                    priceEl.classList.add('price-pulse');
-                    changeEl.classList.add('price-pulse');
                 });
             } catch (err) {
                 console.error('Price update failed:', err);
-                // Show fallback on error
-                COINS.forEach(coin => {
-                    document.getElementById(coin.priceEl).textContent = errorText;
-                    document.getElementById(coin.changeEl).textContent = errorText;
-                });
             }
         }
 
-        // Initial fetch + every 3 seconds
+        // Initial fetch + every 2 seconds
         updatePrices();
-        setInterval(updatePrices, 3000);
+        setInterval(updatePrices, 2000);
     </script>
 </body>
 </html>
