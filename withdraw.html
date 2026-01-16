@@ -2,210 +2,1591 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdraw • KBG Crypto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Membership Upgrade - KBG Crypto</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
-    <div class="background-particles"></div>
-
     <div class="app-container">
-        <!-- Premium Header -->
-        <header class="app-header premium-header">
+        <header class="app-header">
             <div class="header-left">
                 <button class="back-btn" onclick="window.history.back()">←</button>
             </div>
-            <div class="header-center">Withdraw</div>
+            <div class="header-center">Membership Upgrade</div>
         </header>
 
-        <main class="withdraw-main">
-            <!-- Balance & VIP Status -->
-            <section class="withdraw-balance premium-card glass-glow">
-                <div class="balance-header">
-                    <div class="user-info">
-                        <span class="greeting">Welcome back,</span>
-                        <span class="username">cek622</span>
-                        <span class="vip-badge vip6 glowing-vip">VIP6</span>
-                    </div>
-                </div>
+        <!-- Urgent Alert Banner -->
+        <div class="urgent-alert-banner">
+            <div class="urgent-icon">⚠️</div>
+            <h3>Immediate Action Required!</h3>
+            <p>Your current V4 membership has expired. All VIP benefits are currently suspended.</p>
+            <p>Renew immediately to restore full access and continue enjoying VIP6 privileges.</p>
+        </div>
 
-                <div class="balance-display">
-                    <div class="label">Available Balance</div>
-                    <div class="big-balance gradient-text">7,660,222.00 <span class="currency">USDT</span></div>
-                </div>
-
-                <div class="limits-row">
-                    <div class="limit-box">
-                        <div class="limit-label">Daily Limit</div>
-                        <div class="limit-value">5,000,000 USDT</div>
-                    </div>
-                    <div class="limit-box">
-                        <div class="limit-label">Monthly Limit</div>
-                        <div class="limit-value">50,000,000 USDT</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Withdrawal Form – Premium Glass Panel -->
-            <section class="withdraw-interface premium-card glass-glow">
-                <h2 class="gradient-title">Withdraw Funds</h2>
-
-                <div class="withdraw-form">
-                    <div class="form-row">
-                        <label>Wallet Address</label>
-                        <input type="text" class="form-input premium-input" placeholder="Enter your wallet address" id="wallet-address" oninput="validateForm()" />
-                        <p class="instruction-note">Wallet address should be USDT on Tron network (USDT TRC20)</p>
-                        <p class="error-message" id="address-error" style="display: none; color: #f87171; font-size: 0.9rem; margin-top: 0.5rem;">
-                            Please enter a valid wallet address
-                        </p>
-                    </div>
-
-                    <div class="form-row">
-                        <label>Amount (USDT)</label>
-                        <input type="number" class="form-input premium-input" placeholder="0.00" id="withdraw-amount" min="0" step="0.01" oninput="calculateTotal(); validateForm()" />
-                        <p class="min-note">Minimum withdrawal: 5,000 USDT</p>
-                        <p class="error-message" id="amount-error" style="display: none; color: #f87171; font-size: 0.9rem; margin-top: 0.5rem;">
-                            Minimum withdrawal amount is 5,000 USDT
-                        </p>
-                    </div>
-
-                    <div class="fee-info">
-                        <div class="fee-row">
-                            <span>Network Fee</span>
-                            <span>1.00 USDT</span>
-                        </div>
-                        <div class="fee-row total">
-                            <span>Total</span>
-                            <span class="total-value" id="total-amount">0.00 USDT</span>
-                        </div>
-                    </div>
-
-                    <button class="btn-withdraw premium-btn" id="withdraw-btn" disabled onclick="showConfirmWithdraw()">Withdraw Now</button>
-                </div>
-            </section>
-
-            <!-- Confirmation Popup -->
-            <div id="confirm-withdraw-popup" class="modal-overlay" style="display: none;">
-                <div class="modal-content glass-glow">
-                    <button class="modal-close" onclick="closeConfirmWithdraw()">×</button>
-                    <h2 class="modal-title">Confirm Withdrawal</h2>
-                    <p class="modal-message">Are you sure you want to withdraw?</p>
-                    <div class="modal-actions">
-                        <button class="btn-cancel" onclick="closeConfirmWithdraw()">Cancel</button>
-                        <button class="btn-confirm premium-btn" onclick="showExpiredError()">Confirm & Submit</button>
-                    </div>
+        <div class="membership-container">
+            <!-- V4 – Current but Expired -->
+            <div class="membership-card vip4 current expired">
+                <div class="vip-badge-large">V4</div>
+                <div class="diamond-icon">💎</div>
+                <div class="price-tag">6,500.00 USDT</div>
+                <div class="current-tag">Current Plan</div>
+                <div class="expired-tag">Expired</div>
+                <button class="btn-renew" data-plan="v4" data-amount="6500.00">Renew Now</button>
+                <div class="vip-details">
+                    <p class="withdraw-limit-bold">
+                        <strong>Withdraw limit up to</strong> <span class="highlight-limit">4,000,000 USDT</span>
+                    </p>
+                    <ul class="benefits-list">
+                        <li>Priority 24/7 VIP Support</li>
+                        <li>Exclusive Trading Signals</li>
+                        <li>0.5% lower trading fees</li>
+                        <li>Personal account manager</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Expired Plan Error Popup (same as trade page) -->
-            <div id="expired-popup" class="modal-overlay" style="display: none;">
-                <div class="modal-content glass-glow">
-                    <button class="modal-close" onclick="closeExpiredPopup()">×</button>
-                    <h2 class="modal-title gradient-title">Plan Expired</h2>
-                    <p class="modal-message">Increase your plan first. Your current plan is expired.</p>
-                    <div class="modal-actions">
-                        <button class="btn-upgrade premium-btn" onclick="window.location.href='membership.html'">Upgrade Plan</button>
-                        <button class="btn-cancel" onclick="closeExpiredPopup()">Close</button>
-                    </div>
+            <!-- V1 -->
+            <div class="membership-card vip1">
+                <div class="vip-badge-large">V1</div>
+                <div class="diamond-icon">💎</div>
+                <div class="price-tag">1,498.50 USDT</div>
+                <button class="btn-purchase" data-plan="v1" data-amount="1498.50">Purchase</button>
+                <div class="vip-details">
+                    <p class="withdraw-limit-bold">
+                        <strong>Withdraw limit up to</strong> <span class="highlight-limit">500,000 USDT</span>
+                    </p>
+                    <ul class="benefits-list">
+                        <li>Basic 24/7 Support</li>
+                        <li>Standard trading tools</li>
+                        <li>1.5% trading fees</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Bottom Navigation -->
-            <nav class="bottom-nav premium-nav">
-                <a href="home.html" class="nav-item">
-                    <span>Dashboard</span>
-                </a>
-                <a href="trade.html" class="nav-item">
-                    <span>Trade</span>
-                </a>
-                <a href="transfer.html" class="nav-item">
-                    <span>Transfer</span>
-                </a>
-                <a href="account.html" class="nav-item">
-                    <span>Account</span>
-                </a>
-            </nav>
-        </main>
+            <!-- V2 -->
+            <div class="membership-card vip2">
+                <div class="vip-badge-large">V2</div>
+                <div class="diamond-icon">💎</div>
+                <div class="price-tag">3,000.00 USDT</div>
+                <button class="btn-purchase" data-plan="v2" data-amount="3000.00">Purchase</button>
+                <div class="vip-details">
+                    <p class="withdraw-limit-bold">
+                        <strong>Withdraw limit up to</strong> <span class="highlight-limit">1,500,000 USDT</span>
+                    </p>
+                    <ul class="benefits-list">
+                        <li>Enhanced Support (Chat + Email)</li>
+                        <li>Advanced charting tools</li>
+                        <li>1.2% trading fees</li>
+                        <li>Weekly market insights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- V3 -->
+            <div class="membership-card vip3">
+                <div class="vip-badge-large">V3</div>
+                <div class="diamond-icon">💎</div>
+                <div class="price-tag">5,000.00 USDT</div>
+                <button class="btn-purchase" data-plan="v3" data-amount="5000.00">Purchase</button>
+                <div class="vip-details">
+                    <p class="withdraw-limit-bold">
+                        <strong>Withdraw limit up to</strong> <span class="highlight-limit">2,500,000 USDT</span>
+                    </p>
+                    <ul class="benefits-list">
+                        <li>Priority Support (Dedicated Line)</li>
+                        <li>Pro-level analytics</li>
+                        <li>0.8% trading fees</li>
+                        <li>Daily premium signals</li>
+                        <li>Early access to new features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- Payment Modal (OPTIMIZED FOR DESKTOP) -->
+    <div id="payment-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content payment-modal-content glass-card">
+            <div class="modal-header">
+                <h2 class="modal-title">Payment for VIP <span id="modal-plan-level">V1</span></h2>
+                <button class="modal-close" onclick="closePaymentModal()">×</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Desktop optimized layout -->
+                <div class="payment-desktop-layout">
+                    <!-- Left Column: Summary & Methods -->
+                    <div class="payment-left-column">
+                        <!-- Payment Summary -->
+                        <div class="modal-summary-box desktop-summary">
+                            <div class="summary-header">
+                                <h3>Payment Summary</h3>
+                                <div class="vip-plan-badge">VIP <span id="desktop-plan-level">V1</span></div>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Required Amount</span>
+                                <span class="summary-value highlight" id="modal-plan-amount">1,498.50 USDT</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Payment Status</span>
+                                <span class="status-pending">Pending</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            <div class="summary-note">
+                                <span class="note-icon">ℹ️</span>
+                                <span>Payment auto-verifies in 5-10 minutes after 3 confirmations</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div class="payment-methods-section desktop-methods">
+                            <h3 class="section-title">Select Payment Method</h3>
+                            <div class="methods-grid desktop-methods-grid">
+                                <button class="method-card active" data-method="usdt">
+                                    <div class="method-icon-container">
+                                        <span class="method-icon crypto-icon">USDT</span>
+                                    </div>
+                                    <div class="method-info">
+                                        <span class="method-name">USDT (TRC20)</span>
+                                        <span class="method-fee">Network: TRC20 • Fast & Low Fee</span>
+                                    </div>
+                                    <div class="method-check">✓</div>
+                                </button>
+                                <button class="method-card" data-method="bitcoin">
+                                    <div class="method-icon-container">
+                                        <span class="method-icon crypto-icon">BTC</span>
+                                    </div>
+                                    <div class="method-info">
+                                        <span class="method-name">Bitcoin</span>
+                                        <span class="method-fee">Network: BTC • Standard</span>
+                                    </div>
+                                    <div class="method-check">✓</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Important Notice -->
+                        <div class="payment-notice desktop-notice">
+                            <div class="notice-icon">⚠️</div>
+                            <div class="notice-content">
+                                <strong>Security Alert:</strong> Always verify the wallet address matches the selected network. KBG Crypto will never ask you to send funds elsewhere.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Wallet Details -->
+                    <div class="payment-right-column">
+                        <!-- Wallet Details -->
+                        <div class="wallet-details-section desktop-wallet">
+                            <div class="wallet-header">
+                                <h3 class="section-title">Deposit Details</h3>
+                                <div class="network-badge" id="desktop-network-badge">TRC20</div>
+                            </div>
+                            
+                            <div class="wallet-display-container desktop-wallet-display">
+                                <div class="address-header">
+                                    <span class="address-label">Wallet Address</span>
+                                    <span class="address-copy-instruction">(Click to copy)</span>
+                                </div>
+                                <div class="wallet-address-box" id="wallet-address" onclick="copyWallet()">
+                                    TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a
+                                </div>
+                                
+                                <div class="wallet-actions">
+                                    <button class="btn-copy-address" onclick="copyWallet()">
+                                        <span class="copy-icon">📋</span> Copy Address
+                                    </button>
+                                    <button class="btn-refresh-qr" onclick="refreshQR()">
+                                        <span class="refresh-icon">↻</span> Refresh QR
+                                    </button>
+                                </div>
+
+                                <div class="qr-section-desktop">
+                                    <div class="qr-container-desktop">
+                                        <img id="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=placeholder" alt="QR Code" class="qr-code-desktop">
+                                        <div class="qr-overlay">
+                                            <div class="qr-scan-text">Scan QR Code</div>
+                                            <div class="qr-network">TRC20 Network</div>
+                                        </div>
+                                    </div>
+                                    <p class="qr-note-desktop">Scan with your crypto wallet app</p>
+                                </div>
+
+                                <div class="network-warning-box">
+                                    <div class="warning-header">
+                                        <span class="warning-icon">⚠</span>
+                                        <span class="warning-title">Network Verification</span>
+                                    </div>
+                                    <div class="warning-content">
+                                        <p>✓ Send only <strong id="current-method-name">USDT (TRC20)</strong> to this address</p>
+                                        <p>✓ Ensure network matches: <strong>TRC20</strong></p>
+                                        <p>✓ Minimum deposit: <strong>10 USDT</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="payment-actions desktop-actions">
+                    <button class="btn-secondary" onclick="closePaymentModal()">
+                        <span class="btn-icon">←</span> Cancel
+                    </button>
+                    <button class="btn-primary btn-payment-done" onclick="showConfirmPaymentModal()">
+                        <span class="btn-icon">✓</span> I Have Made the Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal (OPTIMIZED FOR DESKTOP) -->
+    <div id="confirm-payment-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content confirm-modal-content glass-card">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirm Payment Details</h2>
+                <button class="modal-close" onclick="closeConfirmModal()">×</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Desktop confirmation layout -->
+                <div class="confirmation-desktop-layout">
+                    <!-- Left: Details -->
+                    <div class="confirmation-left-column">
+                        <div class="confirmation-summary">
+                            <h3 class="confirmation-subtitle">Transaction Summary</h3>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Plan</span>
+                                <span class="confirmation-value plan-badge-large" id="confirm-plan">VIP V1</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Amount</span>
+                                <span class="confirmation-value amount-highlight-large" id="confirm-amount">1,498.50 USDT</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Payment Method</span>
+                                <span class="confirmation-value method-badge-large" id="confirm-method">USDT (TRC20)</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Transaction ID</span>
+                                <span class="confirmation-value tx-id">Will be generated</span>
+                            </div>
+                            <div class="confirmation-item">
+                                <span class="confirmation-label">Estimated Time</span>
+                                <span class="confirmation-value time-estimate">5-10 minutes</span>
+                            </div>
+                        </div>
+
+                        <div class="confirmation-help-box">
+                            <div class="help-icon">💡</div>
+                            <div class="help-content">
+                                <strong>Pro Tip:</strong> Keep a screenshot of this confirmation for your records. Contact VIP Support if verification takes longer than 15 minutes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Wallet & Warning -->
+                    <div class="confirmation-right-column">
+                        <div class="confirmation-wallet-section">
+                            <h3 class="confirmation-subtitle">Destination Wallet</h3>
+                            <div class="wallet-display-container-confirm">
+                                <div class="wallet-address-confirm" id="confirm-wallet">
+                                    TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a
+                                </div>
+                                <button class="btn-copy-confirm" onclick="copyConfirmationWallet()">
+                                    <span class="copy-icon">📋</span> Copy
+                                </button>
+                            </div>
+                            <div class="address-verify">
+                                <span class="verify-icon">🔍</span>
+                                <span>Verify this address matches your wallet exactly</span>
+                            </div>
+                        </div>
+
+                        <div class="confirmation-warning-box desktop-warning">
+                            <div class="warning-header">
+                                <span class="warning-icon-large">⛔</span>
+                                <span class="warning-title">Critical Security Warning</span>
+                            </div>
+                            <div class="warning-content">
+                                <div class="warning-item">
+                                    <span class="warning-bullet">•</span>
+                                    <span>This transaction is <strong>irreversible</strong> on the blockchain</span>
+                                </div>
+                                <div class="warning-item">
+                                    <span class="warning-bullet">•</span>
+                                    <span>Wrong address = <strong>Permanent loss of funds</strong></span>
+                                </div>
+                                <div class="warning-item">
+                                    <span class="warning-bullet">•</span>
+                                    <span>Network mismatch = <strong>Funds will be lost</strong></span>
+                                </div>
+                                <div class="warning-item">
+                                    <span class="warning-bullet">•</span>
+                                    <span>No refunds for incorrect transactions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirmation Buttons -->
+                <div class="confirmation-actions desktop-confirm-actions">
+                    <button class="btn-cancel-large" onclick="closeConfirmModal()">
+                        <span class="btn-icon">←</span> Cancel Transaction
+                    </button>
+                    <button class="btn-confirm-final-large" onclick="confirmPaymentFinal()">
+                        <span class="btn-icon">🔒</span> Confirm & Lock Transaction
+                    </button>
+                </div>
+
+                <!-- Help Text -->
+                <div class="confirmation-footer">
+                    <span class="footer-icon">ⓘ</span>
+                    <span>Need assistance? Contact <a href="#" class="support-link">24/7 VIP Support</a> or email support@kbgcrypto.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Overlay -->
+    <div id="success-overlay" class="success-overlay" style="display: none;">
+        <div class="success-content glass-card">
+            <div class="success-icon">✅</div>
+            <h2>Payment Submitted Successfully!</h2>
+            <p>Your VIP plan activation is in progress. You'll receive confirmation within 5-10 minutes.</p>
+            <div class="success-details">
+                <div class="success-item">
+                    <span>Transaction ID:</span>
+                    <span class="success-value">TX-<span id="success-tx-id">KGB</span><span id="random-tx">${Math.random().toString(36).substr(2, 8).toUpperCase()}</span></span>
+                </div>
+                <div class="success-item">
+                    <span>Estimated Activation:</span>
+                    <span class="success-value" id="activation-timer">10:00</span>
+                </div>
+            </div>
+            <button class="btn-close-success" onclick="closeSuccessOverlay()">Close & Return to Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Toast library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <style>
+        /* DESKTOP OPTIMIZED STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* PAYMENT MODAL - DESKTOP OPTIMIZED */
+        .payment-modal-content {
+            background: linear-gradient(145deg, #0a0e1a, #151b2d);
+            border: 1px solid rgba(56, 178, 172, 0.2);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 1000px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 75px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 32px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(90deg, rgba(56, 178, 172, 0.1), transparent);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            background: linear-gradient(90deg, #ffffff, #38b2ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #a0aec0;
+            font-size: 26px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(220, 38, 38, 0.2);
+            color: #f87171;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 0;
+        }
+
+        /* Desktop Layout Grid */
+        .payment-desktop-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            padding: 32px;
+        }
+
+        @media (min-width: 1024px) {
+            .payment-desktop-layout {
+                grid-template-columns: 1fr 1.2fr;
+                gap: 32px;
+            }
+        }
+
+        /* Left Column */
+        .payment-left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .desktop-summary {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(56, 178, 172, 0.2);
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .summary-header h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .vip-plan-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .summary-label {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        .summary-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .summary-value.highlight {
+            color: #00d4aa;
+            font-size: 1.6rem;
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .summary-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(56, 178, 172, 0.3), transparent);
+            margin: 20px 0;
+        }
+
+        .summary-note {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #a0aec0;
+            font-size: 0.85rem;
+            padding-top: 12px;
+        }
+
+        .note-icon {
+            font-size: 1rem;
+        }
+
+        /* Desktop Methods */
+        .desktop-methods {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .desktop-methods-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .method-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .method-card:hover {
+            background: rgba(56, 178, 172, 0.1);
+            border-color: rgba(56, 178, 172, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .method-card.active {
+            background: rgba(56, 178, 172, 0.15);
+            border-color: #38b2ac;
+            box-shadow: 0 5px 20px rgba(56, 178, 172, 0.2);
+        }
+
+        .method-icon-container {
+            margin-right: 16px;
+        }
+
+        .method-icon.crypto-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .method-info {
+            flex: 1;
+        }
+
+        .method-name {
+            display: block;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .method-fee {
+            display: block;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .method-check {
+            color: #38b2ac;
+            font-size: 1.4rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .method-card.active .method-check {
+            opacity: 1;
+        }
+
+        /* Desktop Notice */
+        .desktop-notice {
+            background: rgba(30, 64, 175, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .notice-icon {
+            font-size: 1.4rem;
+            color: #3b82f6;
+            margin-top: 2px;
+        }
+
+        .notice-content {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Right Column */
+        .payment-right-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .desktop-wallet {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+
+        .wallet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .network-badge {
+            background: linear-gradient(135deg, #00d4aa, #009688);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .wallet-display-container.desktop-wallet-display {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .address-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .address-label {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .address-copy-instruction {
+            color: #38b2ac;
+            font-size: 0.85rem;
+        }
+
+        .wallet-address-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(56, 178, 172, 0.3);
+            border-radius: 14px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #ffffff;
+            word-break: break-all;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            line-height: 1.5;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wallet-address-box:hover {
+            background: rgba(56, 178, 172, 0.1);
+            border-color: #38b2ac;
+            transform: translateY(-1px);
+        }
+
+        .wallet-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-copy-address {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            padding: 14px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            flex: 1;
+        }
+
+        .btn-copy-address:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-refresh-qr {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #ffffff;
+            padding: 14px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-refresh-qr:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .copy-icon, .refresh-icon {
+            font-size: 1.1rem;
+        }
+
+        /* QR Code Desktop */
+        .qr-section-desktop {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .qr-container-desktop {
+            position: relative;
+            display: inline-block;
+            background: white;
+            padding: 16px;
+            border-radius: 16px;
+            border: 2px solid rgba(56, 178, 172, 0.3);
+        }
+
+        .qr-code-desktop {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .qr-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .qr-scan-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .qr-network {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .qr-note-desktop {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-top: 12px;
+        }
+
+        /* Network Warning */
+        .network-warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .warning-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .warning-icon {
+            font-size: 1.2rem;
+            color: #f59e0b;
+        }
+
+        .warning-title {
+            color: #fbbf24;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .warning-content {
+            color: #fbbf24;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .warning-content p {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Desktop Actions */
+        .desktop-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .desktop-actions {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            color: #ffffff;
+            padding: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4aa 0%, #009688 100%);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            padding: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 1.2rem;
+        }
+
+        /* CONFIRMATION MODAL - DESKTOP */
+        .confirm-modal-content {
+            background: linear-gradient(145deg, #0a0e1a, #151b2d);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 1000px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 75px rgba(0, 0, 0, 0.6);
+        }
+
+        .confirmation-desktop-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 32px;
+        }
+
+        @media (min-width: 1024px) {
+            .confirmation-desktop-layout {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+
+        /* Confirmation Left */
+        .confirmation-left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .confirmation-summary {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .confirmation-subtitle {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .confirmation-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .confirmation-item:last-child {
+            border-bottom: none;
+        }
+
+        .confirmation-label {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .confirmation-value {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .plan-badge-large {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .amount-highlight-large {
+            color: #00d4aa;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .method-badge-large {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .tx-id {
+            font-family: 'Courier New', monospace;
+            color: #38b2ac;
+            font-size: 0.9rem;
+        }
+
+        .time-estimate {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        .confirmation-help-box {
+            background: rgba(30, 64, 175, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .help-icon {
+            font-size: 1.4rem;
+            color: #3b82f6;
+            margin-top: 2px;
+        }
+
+        .help-content {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Confirmation Right */
+        .confirmation-right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .confirmation-wallet-section {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .wallet-display-container-confirm {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(56, 178, 172, 0.3);
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+
+        .wallet-address-confirm {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #ffffff;
+            word-break: break-all;
+            flex: 1;
+            padding-right: 16px;
+            line-height: 1.5;
+        }
+
+        .btn-copy-confirm {
+            background: rgba(56, 178, 172, 0.2);
+            border: 1px solid #38b2ac;
+            border-radius: 10px;
+            color: #38b2ac;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .btn-copy-confirm:hover {
+            background: rgba(56, 178, 172, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .address-verify {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #38b2ac;
+            font-size: 0.9rem;
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(56, 178, 172, 0.1);
+            border-radius: 10px;
+        }
+
+        .verify-icon {
+            font-size: 1rem;
+        }
+
+        /* Desktop Warning */
+        .desktop-warning {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .warning-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .warning-icon-large {
+            font-size: 1.8rem;
+            color: #f87171;
+        }
+
+        .warning-title {
+            color: #f87171;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .warning-content {
+            color: #fca5a5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .warning-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .warning-bullet {
+            color: #f87171;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        /* Confirmation Actions */
+        .desktop-confirm-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .desktop-confirm-actions {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        .btn-cancel-large {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            color: #ffffff;
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+
+        .btn-cancel-large:hover {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: rgba(220, 38, 38, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-confirm-final-large {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .btn-confirm-final-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Footer */
+        .confirmation-footer {
+            text-align: center;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-icon {
+            font-size: 1rem;
+        }
+
+        .support-link {
+            color: #38b2ac;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .support-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Success Overlay */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            padding: 20px;
+        }
+
+        .success-content {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid rgba(0, 212, 170, 0.4);
+            border-radius: 24px;
+            padding: 48px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 212, 170, 0.2);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            color: #00d4aa;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-content h2 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff, #00d4aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .success-content p {
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .success-details {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .success-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .success-item:last-child {
+            border-bottom: none;
+        }
+
+        .success-item span:first-child {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        .success-value {
+            color: #00d4aa;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+
+        .btn-close-success {
+            background: linear-gradient(135deg, #00d4aa 0%, #009688 100%);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            padding: 18px 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+            width: 100%;
+        }
+
+        .btn-close-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-header {
+                padding: 20px 16px 16px;
+            }
+            
+            .modal-title {
+                font-size: 1.4rem;
+            }
+            
+            .payment-desktop-layout,
+            .confirmation-desktop-layout {
+                padding: 16px;
+            }
+            
+            .desktop-summary,
+            .desktop-methods,
+            .desktop-wallet,
+            .confirmation-summary,
+            .confirmation-wallet-section,
+            .desktop-warning {
+                padding: 20px;
+            }
+            
+            .summary-value.highlight {
+                font-size: 1.4rem;
+            }
+            
+            .qr-code-desktop {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+
     <script>
-        const MIN_WITHDRAW = 5000;
-        const NETWORK_FEE = 1.00;
-
-        // Calculate Total & Validate Form
-        function calculateTotal() {
-            const amountInput = document.getElementById('withdraw-amount');
-            const totalEl = document.getElementById('total-amount');
-            const amountError = document.getElementById('amount-error');
-            const addressError = document.getElementById('address-error');
-            const withdrawBtn = document.getElementById('withdraw-btn');
-
-            const amount = parseFloat(amountInput.value) || 0;
-            const total = amount + NETWORK_FEE;
-
-            totalEl.textContent = total.toLocaleString('en-US', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }) + ' USDT';
-
-            // Amount validation
-            if (amount > 0 && amount < MIN_WITHDRAW) {
-                amountError.style.display = 'block';
-            } else {
-                amountError.style.display = 'none';
-            }
-
-            validateForm();
-        }
-
-        // Form Validation (enable/disable button)
-        function validateForm() {
-            const amountInput = document.getElementById('withdraw-amount');
-            const addressInput = document.getElementById('wallet-address');
-            const amountError = document.getElementById('amount-error');
-            const addressError = document.getElementById('address-error');
-            const withdrawBtn = document.getElementById('withdraw-btn');
-
-            const amount = parseFloat(amountInput.value) || 0;
-            const address = addressInput.value.trim();
-
-            const isAmountValid = amount >= MIN_WITHDRAW;
-            const isAddressValid = address.length >= 10; // Basic check (you can improve regex later)
-
-            if (!isAddressValid && address.length > 0) {
-                addressError.style.display = 'block';
-            } else {
-                addressError.style.display = 'none';
-            }
-
-            // Enable button only if both are valid
-            withdrawBtn.disabled = !(isAmountValid && isAddressValid);
-        }
-
-        // Confirm Withdrawal Popup
-        function showConfirmWithdraw() {
-            document.getElementById('confirm-withdraw-popup').style.display = 'flex';
-        }
-
-        function closeConfirmWithdraw() {
-            document.getElementById('confirm-withdraw-popup').style.display = 'none';
-        }
-
-        // Show Expired Error (same as trade page)
-        function showExpiredError() {
-            closeConfirmWithdraw();
-            document.getElementById('expired-popup').style.display = 'flex';
-        }
-
-        function closeExpiredPopup() {
-            document.getElementById('expired-popup').style.display = 'none';
-        }
-
-        // Initial call to disable button on load
-        window.onload = function() {
-            validateForm();
+        // Wallet addresses
+        const wallets = {
+            usdt: 'TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a',
+            bitcoin: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'
         };
+
+        // Open payment modal
+        document.querySelectorAll('.btn-purchase, .btn-renew').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const plan = btn.dataset.plan;
+                const amount = btn.dataset.amount;
+
+                if (!plan || !amount) {
+                    toastr.error('Error: Plan or amount missing');
+                    return;
+                }
+
+                document.getElementById('modal-plan-level').textContent = plan.toUpperCase();
+                document.getElementById('desktop-plan-level').textContent = plan.toUpperCase();
+                document.getElementById('modal-plan-amount').textContent = Number(amount).toFixed(2) + ' USDT';
+                document.getElementById('wallet-address').textContent = wallets.usdt;
+                document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${wallets.usdt}`;
+                document.getElementById('current-method-name').textContent = 'USDT (TRC20)';
+
+                document.getElementById('payment-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close payment modal
+        function closePaymentModal() {
+            document.getElementById('payment-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Copy wallet from payment modal
+        function copyWallet() {
+            const address = document.getElementById('wallet-address').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                toastr.success('Wallet address copied to clipboard!');
+            }).catch(() => {
+                toastr.error('Failed to copy address');
+            });
+        }
+
+        // Copy wallet from confirmation modal
+        function copyConfirmationWallet() {
+            const address = document.getElementById('confirm-wallet').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                toastr.success('Wallet address copied to clipboard!');
+            }).catch(() => {
+                toastr.error('Failed to copy address');
+            });
+        }
+
+        // Refresh QR code
+        function refreshQR() {
+            const address = document.getElementById('wallet-address').textContent;
+            const qrCode = document.getElementById('qr-code');
+            qrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${address}&t=${Date.now()}`;
+            toastr.info('QR Code refreshed');
+        }
+
+        // Switch payment method
+        document.querySelectorAll('.method-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.method-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                
+                const method = card.dataset.method;
+                const methodName = card.querySelector('.method-name').textContent;
+                const network = method === 'usdt' ? 'TRC20' : 'BTC';
+                
+                document.getElementById('wallet-address').textContent = wallets[method];
+                document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${wallets[method]}`;
+                document.getElementById('current-method-name').textContent = methodName;
+                document.getElementById('desktop-network-badge').textContent = network;
+                
+                // Update QR overlay
+                document.querySelector('.qr-network').textContent = `${network} Network`;
+            });
+        });
+
+        // Show confirmation modal
+        function showConfirmPaymentModal() {
+            document.getElementById('confirm-plan').textContent = 'VIP ' + document.getElementById('modal-plan-level').textContent;
+            document.getElementById('confirm-amount').textContent = document.getElementById('modal-plan-amount').textContent;
+            document.getElementById('confirm-method').textContent = document.querySelector('.method-card.active .method-name').textContent || 'USDT (TRC20)';
+            document.getElementById('confirm-wallet').textContent = document.getElementById('wallet-address').textContent;
+
+            // Generate success TX ID
+            const txId = 'KGB' + Math.random().toString(36).substr(2, 8).toUpperCase();
+            document.getElementById('random-tx').textContent = Math.random().toString(36).substr(2, 8).toUpperCase();
+
+            document.getElementById('payment-modal').style.display = 'none';
+            document.getElementById('confirm-payment-modal').style.display = 'flex';
+        }
+
+        // Close confirmation modal
+        function closeConfirmModal() {
+            document.getElementById('confirm-payment-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Final confirmation → Show success overlay
+        function confirmPaymentFinal() {
+            closeConfirmModal();
+
+            // Start countdown timer
+            let timeLeft = 600; // 10 minutes in seconds
+            const timerElement = document.getElementById('activation-timer');
+            
+            const timerInterval = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = 'Ready';
+                } else {
+                    timeLeft--;
+                }
+            }, 1000);
+
+            const successOverlay = document.getElementById('success-overlay');
+            successOverlay.style.display = 'flex';
+
+            // Auto-close after 12 seconds
+            setTimeout(() => {
+                successOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                clearInterval(timerInterval);
+            }, 12000);
+        }
+
+        // Close success overlay
+        function closeSuccessOverlay() {
+            document.getElementById('success-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modals on outside click
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', e => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Toastr configuration
+        toastr.options = {
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            timeOut: 4000,
+            closeButton: true,
+            newestOnTop: true
+        };
+
+        // Initialize with USDT selected
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.method-card[data-method="usdt"]').classList.add('active');
+        });
     </script>
 </body>
-</html>
+                                    </html>
