@@ -7548,3 +7548,132 @@ body, .app-container, .trade-main {
 .plans-grid, .limits-row {
     overflow: hidden;
 }
+
+/* ──────────────────────────────────────────────
+   ACCOUNT PAGE – Full Mobile Responsiveness & Premium Polish
+   ────────────────────────────────────────────── */
+
+.account-content {
+    padding: 1.5rem 1rem 120px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.account-profile.premium-card {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-avatar.glowing-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+}
+
+.profile-info h2 {
+    font-size: 1.6rem;
+}
+
+.balance-item.main-balance .balance-value,
+.deposit-info .balance-value {
+    font-size: 2rem;
+    line-height: 1.1;
+    word-break: break-word;
+}
+
+.balance-divider {
+    margin: 1.2rem 0;
+}
+
+.deposit-row {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.btn-refund {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.quick-actions .action-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.2rem;
+}
+
+.action-card.premium-action {
+    padding: 1.2rem;
+}
+
+.action-icon.premium-icon {
+    font-size: 2.5rem;
+}
+
+.menu-section .menu-item {
+    padding: 1.2rem 1.5rem;
+}
+
+.transaction-history.premium-card {
+    padding: 1.5rem;
+}
+
+.history-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.history-table {
+    min-width: 600px; /* Allows horizontal scroll on mobile */
+}
+
+.history-table th, .history-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+    .account-content {
+        padding: 1rem 0.8rem 100px;
+    }
+
+    .profile-avatar.glowing-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .profile-info h2 {
+        font-size: 1.4rem;
+    }
+
+    .balance-value {
+        font-size: 1.7rem;
+    }
+
+    .btn-refund {
+        font-size: 0.95rem;
+    }
+
+    .quick-actions .action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-card.premium-action {
+        padding: 1.5rem;
+    }
+
+    .action-icon.premium-icon {
+        font-size: 2.2rem;
+    }
+
+    .menu-item {
+        font-size: 0.95rem;
+    }
+
+    .btn-load-more {
+        font-size: 0.95rem;
+    }
+}
