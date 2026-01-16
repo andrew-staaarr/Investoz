@@ -11,7 +11,7 @@
     <div class="background-particles"></div>
 
     <div class="app-container">
-        <header class="app-header">
+        <header class="app-header premium-header">
             <div class="header-center">My Account</div>
             <div class="header-right">
                 <button class="settings-btn">⚙️</button>
@@ -20,19 +20,19 @@
 
         <main class="account-content">
             <!-- Profile -->
-            <section class="account-profile glass-card">
-                <div class="profile-avatar">N</div>
+            <section class="account-profile glass-card premium-card">
+                <div class="profile-avatar glowing-avatar">N</div>
                 <div class="profile-info">
                     <h2 id="account-username">cek622</h2>
-                    <span class="vip-badge" id="account-vip">VIP6</span>
+                    <span class="vip-badge vip6 glowing-vip">VIP6</span>
                 </div>
             </section>
 
             <!-- Balance -->
-            <section class="account-balance glass-card">
+            <section class="account-balance glass-card premium-card">
                 <div class="balance-item main-balance">
                     <span class="balance-label">My Assets (USDT)</span>
-                    <span class="balance-value" id="account-balance">26,660,222.00</span>
+                    <span class="balance-value gradient-text" id="account-balance">26,660,222.00</span>
                 </div>
 
                 <div class="balance-divider"></div>
@@ -40,9 +40,9 @@
                 <div class="balance-item deposit-row">
                     <div class="deposit-info">
                         <span class="balance-label">Deposit (USDT)</span>
-                        <span class="balance-value" id="account-deposit">18,000.00</span>
+                        <span class="balance-value gradient-text" id="account-deposit">18,000.00</span>
                     </div>
-                    <button class="btn-refund" onclick="showRefundPopup()">Apply for Refund</button>
+                    <button class="btn-refund premium-btn" onclick="showRefundPopup()">Apply for Refund</button>
                 </div>
             </section>
 
@@ -50,29 +50,29 @@
             <div id="refund-popup" class="modal-overlay" style="display: none;">
                 <div class="modal-content glass-card">
                     <button class="modal-close" onclick="closeRefundPopup()">×</button>
-                    <h2 class="modal-title">Refund Request</h2>
+                    <h2 class="modal-title">Refund Status</h2>
                     <p class="modal-message">You have already applied for refund. It will be received into your account soon.</p>
                     <button class="btn-confirm premium-btn" onclick="closeRefundPopup()">OK</button>
                 </div>
             </div>
 
-            <!-- Quick Actions – Aligned like Trade page -->
-            <section class="quick-actions">
+            <!-- Quick Actions – Responsive Grid -->
+            <section class="quick-actions premium-actions">
                 <div class="action-grid">
-                    <div class="action-card" onclick="window.location.href='deposit.html'">
-                        <span class="action-icon">💳</span>
+                    <div class="action-card premium-action" onclick="window.location.href='deposit.html'">
+                        <span class="action-icon premium-icon">💳</span>
                         <span>Deposit</span>
                     </div>
-                    <div class="action-card" onclick="window.location.href='withdraw.html'">
-                        <span class="action-icon">🏦</span>
+                    <div class="action-card premium-action" onclick="window.location.href='withdraw.html'">
+                        <span class="action-icon premium-icon">🏦</span>
                         <span>Withdraw</span>
                     </div>
-                    <div class="action-card" onclick="window.location.href='transfer.html'">
-                        <span class="action-icon">💸</span>
+                    <div class="action-card premium-action" onclick="window.location.href='transfer.html'">
+                        <span class="action-icon premium-icon">💸</span>
                         <span>Internal Transfer</span>
                     </div>
-                    <div class="action-card" onclick="window.location.href='membership.html'">
-                        <span class="action-icon">💎</span>
+                    <div class="action-card premium-action highlight-vip" onclick="window.location.href='membership.html'">
+                        <span class="action-icon premium-icon">💎</span>
                         <span>Membership Upgrade</span>
                     </div>
                 </div>
@@ -80,8 +80,8 @@
 
             <!-- Expandable Menu Sections -->
             <section class="menu-section">
-                <div class="menu-item accordion" data-target="msg-notification">
-                    <span class="menu-icon">🔔</span>
+                <div class="menu-item accordion premium-accordion" data-target="msg-notification">
+                    <span class="menu-icon premium-icon">🔔</span>
                     <span class="menu-text">Message Notification</span>
                     <span class="menu-arrow">▼</span>
                 </div>
@@ -95,8 +95,8 @@
                     </div>
                 </div>
 
-                <div class="menu-item accordion" data-target="quick-buy">
-                    <span class="menu-icon">💰</span>
+                <div class="menu-item accordion premium-accordion" data-target="quick-buy">
+                    <span class="menu-icon premium-icon">💰</span>
                     <span class="menu-text">Quick Buy</span>
                     <span class="menu-arrow">▼</span>
                 </div>
@@ -105,15 +105,15 @@
                         <h4>Instant Purchase</h4>
                         <p>Buy crypto with one tap:</p>
                         <div class="quick-buy-grid">
-                            <button class="quick-btn">BTC</button>
-                            <button class="quick-btn">ETH</button>
-                            <button class="quick-btn">USDT</button>
+                            <button class="quick-btn premium-btn">BTC</button>
+                            <button class="quick-btn premium-btn">ETH</button>
+                            <button class="quick-btn premium-btn">USDT</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="menu-item accordion" data-target="help-center">
-                    <span class="menu-icon">❓</span>
+                <div class="menu-item accordion premium-accordion" data-target="help-center">
+                    <span class="menu-icon premium-icon">❓</span>
                     <span class="menu-text">Help Center</span>
                     <span class="menu-arrow">▼</span>
                 </div>
@@ -125,8 +125,8 @@
                     </div>
                 </div>
 
-                <div class="menu-item accordion" data-target="language-switch">
-                    <span class="menu-icon">💬</span>
+                <div class="menu-item accordion premium-accordion" data-target="language-switch">
+                    <span class="menu-icon premium-icon">💬</span>
                     <span class="menu-text">Language Switch</span>
                     <span class="menu-arrow">▼</span>
                 </div>
@@ -134,16 +134,16 @@
                     <div class="accordion-body">
                         <h4>Choose Language</h4>
                         <div class="lang-options">
-                            <button class="lang-btn active">English</button>
-                            <button class="lang-btn">中文</button>
-                            <button class="lang-btn">Español</button>
+                            <button class="lang-btn active premium-btn">English</button>
+                            <button class="lang-btn premium-btn">中文</button>
+                            <button class="lang-btn premium-btn">Español</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Transaction History Section -->
-            <section class="transaction-history glass-card">
+            <!-- Transaction History Section – Responsive -->
+            <section class="transaction-history glass-card premium-card">
                 <div class="history-header">
                     <h3>Transaction History</h3>
                     <span class="history-filter">Last 30 days</span>
@@ -201,29 +201,25 @@
                 </div>
 
                 <div class="history-footer">
-                    <button class="btn-load-more">Load More Transactions</button>
+                    <button class="btn-load-more premium-btn">Load More Transactions</button>
                 </div>
             </section>
 
-            <button class="btn-switch-account" onclick="logout()">Switch to another account</button>
+            <button class="btn-switch-account premium-btn" onclick="logout()">Switch to another account</button>
         </main>
 
-        <nav class="bottom-nav">
+        <nav class="bottom-nav premium-nav">
             <a href="home.html" class="nav-item">
-                <span class="nav-icon">🏠</span>
                 <span>Home</span>
             </a>
             <a href="trade.html" class="nav-item">
-                <span class="nav-icon">📊</span>
                 <span>Trade</span>
             </a>
             <a href="transfer.html" class="nav-item">
-                <span class="nav-icon">💸</span>
                 <span>Transfer</span>
             </a>
             <a href="account.html" class="nav-item active">
-                <span class="nav-icon">👤</span>
-                <span>My Account</span>
+                <span>Account</span>
             </a>
         </nav>
     </div>
@@ -231,7 +227,7 @@
     <script type="module" src="account.js"></script>
     <script type="module" src="config.js"></script>
 
-    <!-- Accordion JS (for menu sections) -->
+    <!-- Accordion JS -->
     <script>
         document.querySelectorAll('.accordion').forEach(item => {
             item.addEventListener('click', function() {
@@ -281,4 +277,3 @@
     </div>
 </body>
 </html>
-
