@@ -7425,3 +7425,126 @@ body {
     }
 }
 
+/* ──────────────────────────────────────────────
+   TRADE PAGE – Full Mobile Responsiveness + Premium Polish
+   ────────────────────────────────────────────── */
+
+.trade-main {
+    padding: 1.5rem 1rem 120px;
+    max-width: 100%;
+}
+
+.trade-balance.premium-card,
+.investment-plans.premium-card {
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+}
+
+.big-balance {
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin: 0.5rem 0;
+    word-break: break-word;
+}
+
+@media (min-width: 768px) {
+    .big-balance {
+        font-size: 3rem;
+    }
+}
+
+.limit-box {
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.limit-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.investment-header {
+    text-align: center;
+}
+
+.investment-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.plans-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.plan-card {
+    padding: 1.8rem;
+    border-radius: 20px;
+}
+
+.plan-badge {
+    font-size: 1.1rem;
+    padding: 8px 16px;
+}
+
+.profit-rate {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.profit-desc {
+    font-size: 0.95rem;
+}
+
+.plan-benefits li {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+}
+
+.btn-invest {
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+    .trade-main {
+        padding: 1rem 0.8rem 100px;
+    }
+
+    .big-balance {
+        font-size: 1.8rem;
+    }
+
+    .profit-rate {
+        font-size: 1.9rem;
+    }
+
+    .plan-card {
+        padding: 1.5rem;
+    }
+
+    .limit-box {
+        padding: 0.8rem;
+    }
+
+    .limit-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* Ensure no overflow */
+body, .app-container, .trade-main {
+    overflow-x: hidden;
+}
+
+.plans-grid, .limits-row {
+    overflow: hidden;
+}
