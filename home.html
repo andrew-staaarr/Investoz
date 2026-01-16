@@ -110,7 +110,7 @@
         </nav>
     </div>
 
-    <!-- CoinGecko Live Price Script – Updated & Reliable -->
+    <!-- CoinGecko Live Price Script – Fixed & Reliable -->
     <script>
         const COINS = [
             { id: 'bitcoin', symbol: 'BTC', priceEl: 'btc-price', changeEl: 'btc-change' },
@@ -118,30 +118,39 @@
             { id: 'dogecoin', symbol: 'DOGE', priceEl: 'doge-price', changeEl: 'doge-change' }
         ];
 
+        const loadingText = 'Loading...';
+        const errorText = '—';
+
         async function updatePrices() {
             try {
                 const ids = COINS.map(c => c.id).join(',');
                 const response = await fetch(
                     `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`,
-                    { cache: 'no-cache' } // Force fresh data
+                    { cache: 'no-store' } // Force fresh data every time
                 );
 
-                if (!response.ok) throw new Error('Network response was not ok');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
 
                 const data = await response.json();
 
                 COINS.forEach(coin => {
                     const info = data[coin.id];
-                    if (!info) return;
+                    const priceEl = document.getElementById(coin.priceEl);
+                    const changeEl = document.getElementById(coin.changeEl);
+
+                    if (!info || !info.usd) {
+                        priceEl.textContent = errorText;
+                        changeEl.textContent = errorText;
+                        return;
+                    }
 
                     const price = info.usd;
                     const change = info.usd_24h_change || 0;
                     const changeText = change >= 0 ? `+\( {change.toFixed(2)}%` : ` \){change.toFixed(2)}%`;
 
-                    const priceEl = document.getElementById(coin.priceEl);
-                    const changeEl = document.getElementById(coin.changeEl);
-
-                    // Update values with proper formatting
+                    // Update with clean formatting
                     priceEl.textContent = price.toLocaleString('en-US', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
@@ -160,9 +169,10 @@
                 });
             } catch (err) {
                 console.error('Price update failed:', err);
-                // Optional: Show fallback message
-                document.querySelectorAll('.crypto-price').forEach(el => {
-                    el.textContent = '—';
+                // Show fallback on error
+                COINS.forEach(coin => {
+                    document.getElementById(coin.priceEl).textContent = errorText;
+                    document.getElementById(coin.changeEl).textContent = errorText;
                 });
             }
         }
