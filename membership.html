@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,7 +153,7 @@
                     </div>
                 </div>
 
-                <!-- Wallet Details -->
+                <!-- Wallet Details - FIXED HORIZONTAL LAYOUT FOR DESKTOP -->
                 <div class="wallet-details-section">
                     <h3 class="section-title">Deposit Wallet Address</h3>
                     <div class="wallet-details-grid">
@@ -163,10 +164,22 @@
                             <p class="qr-note">Scan to deposit</p>
                         </div>
                         <div class="wallet-address-section">
-                            <div class="address-label">Wallet Address</div>
-                            <div class="wallet-address-container">
-                                <div class="wallet-address" id="wallet-address">TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a</div>
-                                <button class="btn-copy-address" onclick="copyWallet()">
+                            <div class="address-header">
+                                <span class="address-label">Wallet Address</span>
+                                <span class="network-tag-desktop" id="desktop-network-tag">TRC20</span>
+                            </div>
+                            <div class="wallet-address-container-desktop">
+                                <div class="wallet-address-box-desktop" onclick="copyWallet()">
+                                    <div class="wallet-address" id="wallet-address">
+                                        <span class="address-part">TKd4YdV</span>
+                                        <span class="address-part">8vB3e7k</span>
+                                        <span class="address-part">PqL9mN2</span>
+                                        <span class="address-part">rX5sW7t</span>
+                                        <span class="address-part">Y8uZ9a</span>
+                                    </div>
+                                    <div class="copy-hint">Click to copy</div>
+                                </div>
+                                <button class="btn-copy-address-desktop" onclick="copyWallet()">
                                     <span class="copy-icon">📋</span> Copy Address
                                 </button>
                             </div>
@@ -223,7 +236,13 @@
                     <div class="confirmation-item wallet-item">
                         <span class="confirmation-label">Wallet Address</span>
                         <div class="wallet-display-container">
-                            <div class="wallet-display" id="confirm-wallet">TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a</div>
+                            <div class="wallet-display-horizontal" id="confirm-wallet">
+                                <span class="address-segment">TKd4YdV</span>
+                                <span class="address-segment">8vB3e7k</span>
+                                <span class="address-segment">PqL9mN2</span>
+                                <span class="address-segment">rX5sW7t</span>
+                                <span class="address-segment">Y8uZ9a</span>
+                            </div>
                             <button class="btn-copy-small" onclick="copyConfirmationWallet()">
                                 <span class="copy-icon-small">📋</span>
                             </button>
@@ -466,7 +485,7 @@
             opacity: 1;
         }
 
-        /* Wallet Details */
+        /* Wallet Details - FIXED FOR DESKTOP */
         .wallet-details-section {
             margin-bottom: 24px;
         }
@@ -509,46 +528,96 @@
             flex-direction: column;
         }
 
+        .address-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
         .address-label {
             color: #a0aec0;
             font-size: 0.9rem;
-            margin-bottom: 8px;
+            font-weight: 600;
         }
 
-        .wallet-address-container {
+        .network-tag-desktop {
+            background: rgba(56, 178, 172, 0.2);
+            color: #38b2ac;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* FIXED WALLET ADDRESS LAYOUT FOR DESKTOP */
+        .wallet-address-container-desktop {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
         @media (min-width: 480px) {
-            .wallet-address-container {
+            .wallet-address-container-desktop {
                 flex-direction: row;
                 align-items: center;
             }
         }
 
-        .wallet-address {
+        .wallet-address-box-desktop {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 14px 16px;
+            padding: 16px;
+            flex: 1;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .wallet-address-box-desktop:hover {
+            background: rgba(56, 178, 172, 0.1);
+            border-color: rgba(56, 178, 172, 0.3);
+        }
+
+        /* HORIZONTAL WALLET ADDRESS FOR DESKTOP */
+        .wallet-address {
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
             color: #ffffff;
-            word-break: break-all;
-            flex: 1;
-            min-height: 48px;
             display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
             align-items: center;
+            line-height: 1.4;
         }
 
-        .btn-copy-address {
+        .address-part {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-hint {
+            color: #38b2ac;
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 6px;
+            opacity: 0.8;
+        }
+
+        .btn-copy-address-desktop {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
             border-radius: 10px;
             color: white;
-            padding: 12px 20px;
+            padding: 14px 20px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -557,9 +626,10 @@
             gap: 8px;
             transition: all 0.3s;
             white-space: nowrap;
+            min-width: 140px;
         }
 
-        .btn-copy-address:hover {
+        .btn-copy-address-desktop:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
@@ -755,13 +825,26 @@
             }
         }
 
-        .wallet-display {
+        /* HORIZONTAL WALLET DISPLAY FOR CONFIRMATION */
+        .wallet-display-horizontal {
             font-family: 'Courier New', monospace;
             font-size: 0.85rem;
             color: #ffffff;
             word-break: break-all;
             flex: 1;
             padding-right: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .address-segment {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
         }
 
         .btn-copy-small {
@@ -984,6 +1067,45 @@
             .payment-actions, .confirmation-actions {
                 grid-template-columns: 1fr;
             }
+            
+            /* Mobile-specific wallet styles */
+            .wallet-address {
+                flex-direction: column;
+                gap: 4px;
+            }
+            
+            .address-part {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .wallet-address-container-desktop {
+                flex-direction: column;
+            }
+            
+            .btn-copy-address-desktop {
+                width: 100%;
+            }
+            
+            .network-tag-desktop {
+                display: none;
+            }
+        }
+
+        /* Desktop-specific wallet improvements */
+        @media (min-width: 768px) {
+            .wallet-address {
+                justify-content: flex-start;
+            }
+            
+            .address-part {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+            
+            .wallet-address-box-desktop {
+                min-height: 80px;
+            }
         }
     </style>
 
@@ -993,6 +1115,78 @@
             usdt: 'TKd4YdV8vB3e7kPqL9mN2rX5sW7tY8uZ9a',
             bitcoin: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'
         };
+
+        // Function to format wallet address into segments
+        function formatWalletAddress(address) {
+            if (!address) return '';
+            
+            // For USDT (TRC20) addresses
+            if (address.startsWith('T')) {
+                const segments = [
+                    address.substring(0, 7),   // TKd4YdV
+                    address.substring(7, 14),  // 8vB3e7k
+                    address.substring(14, 21), // PqL9mN2
+                    address.substring(21, 28), // rX5sW7t
+                    address.substring(28)      // Y8uZ9a
+                ];
+                return segments.filter(s => s.length > 0);
+            }
+            
+            // For Bitcoin addresses
+            if (address.startsWith('1') || address.startsWith('3') || address.startsWith('bc1')) {
+                const segments = [
+                    address.substring(0, 8),
+                    address.substring(8, 16),
+                    address.substring(16, 24),
+                    address.substring(24, 32),
+                    address.substring(32)
+                ];
+                return segments.filter(s => s.length > 0);
+            }
+            
+            // Default segmentation
+            const segmentLength = Math.ceil(address.length / 5);
+            const segments = [];
+            for (let i = 0; i < address.length; i += segmentLength) {
+                segments.push(address.substring(i, i + segmentLength));
+            }
+            return segments;
+        }
+
+        // Function to update wallet display
+        function updateWalletDisplay(address, method) {
+            const segments = formatWalletAddress(address);
+            
+            // Update payment modal
+            const walletElement = document.getElementById('wallet-address');
+            if (walletElement) {
+                walletElement.innerHTML = '';
+                segments.forEach(segment => {
+                    const span = document.createElement('span');
+                    span.className = 'address-part';
+                    span.textContent = segment;
+                    walletElement.appendChild(span);
+                });
+            }
+            
+            // Update confirmation modal
+            const confirmWalletElement = document.getElementById('confirm-wallet');
+            if (confirmWalletElement) {
+                confirmWalletElement.innerHTML = '';
+                segments.forEach(segment => {
+                    const span = document.createElement('span');
+                    span.className = 'address-segment';
+                    span.textContent = segment;
+                    confirmWalletElement.appendChild(span);
+                });
+            }
+            
+            // Update network tag
+            const networkTag = document.getElementById('desktop-network-tag');
+            if (networkTag) {
+                networkTag.textContent = method === 'usdt' ? 'TRC20' : 'BTC';
+            }
+        }
 
         // Open payment modal
         document.querySelectorAll('.btn-purchase, .btn-renew').forEach(btn => {
@@ -1007,9 +1201,15 @@
 
                 document.getElementById('modal-plan-level').textContent = plan.toUpperCase();
                 document.getElementById('modal-plan-amount').textContent = Number(amount).toFixed(2) + ' USDT';
-                document.getElementById('wallet-address').textContent = wallets.usdt;
-                document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${wallets.usdt}`;
+                
+                // Set initial wallet
+                const method = 'usdt';
+                const address = wallets[method];
+                document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${address}`;
                 document.getElementById('current-method-name').textContent = 'USDT (TRC20)';
+                
+                // Update wallet display with formatted address
+                updateWalletDisplay(address, method);
 
                 document.getElementById('payment-modal').style.display = 'flex';
                 document.body.style.overflow = 'hidden';
@@ -1024,7 +1224,8 @@
 
         // Copy wallet from payment modal
         function copyWallet() {
-            const address = document.getElementById('wallet-address').textContent;
+            const method = document.querySelector('.method-card.active')?.dataset.method || 'usdt';
+            const address = wallets[method];
             navigator.clipboard.writeText(address).then(() => {
                 toastr.success('Wallet address copied to clipboard!');
             }).catch(() => {
@@ -1034,7 +1235,8 @@
 
         // Copy wallet from confirmation modal
         function copyConfirmationWallet() {
-            const address = document.getElementById('confirm-wallet').textContent;
+            const method = document.querySelector('.method-card.active')?.dataset.method || 'usdt';
+            const address = wallets[method];
             navigator.clipboard.writeText(address).then(() => {
                 toastr.success('Wallet address copied to clipboard!');
             }).catch(() => {
@@ -1050,10 +1252,13 @@
                 
                 const method = card.dataset.method;
                 const methodName = card.querySelector('.method-name').textContent;
+                const address = wallets[method];
                 
-                document.getElementById('wallet-address').textContent = wallets[method];
-                document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${wallets[method]}`;
+                document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${address}`;
                 document.getElementById('current-method-name').textContent = methodName;
+                
+                // Update wallet display with formatted address
+                updateWalletDisplay(address, method);
             });
         });
 
@@ -1062,7 +1267,11 @@
             document.getElementById('confirm-plan').textContent = 'VIP ' + document.getElementById('modal-plan-level').textContent;
             document.getElementById('confirm-amount').textContent = document.getElementById('modal-plan-amount').textContent;
             document.getElementById('confirm-method').textContent = document.querySelector('.method-card.active .method-name').textContent || 'USDT (TRC20)';
-            document.getElementById('confirm-wallet').textContent = document.getElementById('wallet-address').textContent;
+            
+            // Get current wallet address for confirmation
+            const method = document.querySelector('.method-card.active')?.dataset.method || 'usdt';
+            const address = wallets[method];
+            updateWalletDisplay(address, method);
 
             document.getElementById('payment-modal').style.display = 'none';
             document.getElementById('confirm-payment-modal').style.display = 'flex';
@@ -1111,6 +1320,12 @@
             timeOut: 3000,
             closeButton: true
         };
+
+        // Initialize with USDT selected
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.method-card[data-method="usdt"]').classList.add('active');
+            updateWalletDisplay(wallets.usdt, 'usdt');
+        });
     </script>
 </body>
-    </html>
+                        </html>
