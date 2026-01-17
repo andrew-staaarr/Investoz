@@ -69,7 +69,7 @@
             </div>
         </section>
 
-        <!-- Live Activity Section – Fully Responsive + Improved -->
+        <!-- Live Activity Section – Fully Responsive & Fixed -->
         <section class="live-activity-section">
             <div class="section-header">
                 <div class="header-left">
@@ -95,7 +95,7 @@
             </div>
 
             <div class="activity-container">
-                <!-- Activity Tabs – Scrollable on mobile -->
+                <!-- Activity Tabs -->
                 <div class="activity-tabs">
                     <button class="activity-tab active" data-tab="all">All Activity</button>
                     <button class="activity-tab" data-tab="profits">Profits</button>
@@ -213,7 +213,7 @@
         </nav>
     </div>
 
-    <!-- Live Activity Styles – Fully Responsive + Fixed Alignment -->
+    <!-- Live Activity Styles – Fully Responsive & Fixed -->
     <style>
         .live-activity-section {
             background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
@@ -407,6 +407,8 @@
             font-weight: 700;
             font-size: 1.05rem;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .activity-details {
@@ -443,12 +445,16 @@
             .activity-header {
                 flex-wrap: nowrap;
             }
+
+            .summary-value {
+                font-size: 1.6rem;
+            }
         }
 
         @media (max-width: 480px) {
             .live-activity-section {
-                padding: 1.2rem 1rem;
-                margin: 1rem 0.8rem;
+                padding: 1rem 0.8rem;
+                margin: 1rem 0.5rem;
             }
 
             .summary-value {
@@ -457,17 +463,21 @@
 
             .summary-item {
                 min-width: 110px;
-                padding: 0.7rem;
+                padding: 0.6rem;
             }
 
             .activity-tab {
                 padding: 10px 14px;
                 font-size: 0.85rem;
             }
+
+            .activity-amount {
+                font-size: 1rem;
+            }
         }
     </style>
 
-    <!-- Live Activity Script – With Tab Filtering + Live Stat Updates -->
+    <!-- Live Activity Script – Fixed & Enhanced -->
     <script>
         const sampleUsers = [
             { name: "Alex", initial: "A", level: "V4" },
@@ -608,7 +618,7 @@
 
     <!-- CoinPaprika Live Price Script (unchanged) -->
     <script>
-        // Your existing price update script remains here...
+        // ... your existing price update script ...
     </script>
 </body>
 </html>
