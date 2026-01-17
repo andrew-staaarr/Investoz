@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <title>KBG Crypto - Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="background-particles"></div>
@@ -40,6 +42,78 @@
                     <div class="stat-card">
                         <span class="stat-value">99.99%</span>
                         <span class="stat-label">Uptime SLA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Activity Alerts Section -->
+        <section class="live-activity-section">
+            <div class="section-header">
+                <div class="header-left">
+                    <div class="live-indicator">
+                        <span class="live-dot"></span>
+                        LIVE ACTIVITY
+                    </div>
+                    <h2>Recent Profits & Withdrawals</h2>
+                    <p class="section-subtitle">Real-time updates from KBG Crypto traders worldwide</p>
+                </div>
+                <div class="header-right">
+                    <div class="stats-summary">
+                        <div class="summary-item">
+                            <span class="summary-value" id="today-profit">+$842.5K</span>
+                            <span class="summary-label">Today's Profit</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-value" id="today-withdrawals">$3.2M</span>
+                            <span class="summary-label">Today's Withdrawals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-container">
+                <!-- Activity Tabs -->
+                <div class="activity-tabs">
+                    <button class="activity-tab active" data-tab="all">All Activity</button>
+                    <button class="activity-tab" data-tab="profits">Profits</button>
+                    <button class="activity-tab" data-tab="withdrawals">Withdrawals</button>
+                    <button class="activity-tab" data-tab="vip">VIP Members</button>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="activity-feed" id="activity-feed">
+                    <!-- Activity items will be dynamically generated here -->
+                </div>
+
+                <!-- Activity Stats -->
+                <div class="activity-stats">
+                    <div class="stat-card-small">
+                        <div class="stat-icon profit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number">1,247</span>
+                            <span class="stat-text">Profits Today</span>
+                        </div>
+                    </div>
+                    <div class="stat-card-small">
+                        <div class="stat-icon withdrawal-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number">892</span>
+                            <span class="stat-text">Withdrawals Today</span>
+                        </div>
+                    </div>
+                    <div class="stat-card-small">
+                        <div class="stat-icon user-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number">56</span>
+                            <span class="stat-text">New VIPs Today</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,6 +229,689 @@
         </nav>
     </div>
 
+    <!-- Live Activity Styles -->
+    <style>
+        /* Live Activity Section */
+        .live-activity-section {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            margin: 24px 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(220, 38, 38, 0.15);
+            color: #f87171;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #f87171;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .live-activity-section h2 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            background: linear-gradient(90deg, #ffffff, #38b2ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .header-right {
+            flex-shrink: 0;
+        }
+
+        .stats-summary {
+            display: flex;
+            gap: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-value {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4aa;
+            margin-bottom: 4px;
+        }
+
+        #today-withdrawals {
+            color: #38b2ac;
+        }
+
+        .summary-label {
+            display: block;
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+
+        /* Activity Container */
+        .activity-container {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Activity Tabs */
+        .activity-tabs {
+            display: flex;
+            background: rgba(30, 41, 59, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0 16px;
+        }
+
+        .activity-tab {
+            background: none;
+            border: none;
+            color: #a0aec0;
+            padding: 16px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .activity-tab:hover {
+            color: #ffffff;
+        }
+
+        .activity-tab.active {
+            color: #38b2ac;
+            font-weight: 600;
+        }
+
+        .activity-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #38b2ac, #00d4aa);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            max-height: 320px;
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .activity-feed::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .activity-feed::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .activity-feed::-webkit-scrollbar-thumb {
+            background: rgba(56, 178, 172, 0.5);
+            border-radius: 3px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .activity-item:hover {
+            background: rgba(56, 178, 172, 0.05);
+            border-color: rgba(56, 178, 172, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .activity-item.new {
+            background: rgba(56, 178, 172, 0.08);
+            border: 1px solid rgba(56, 178, 172, 0.15);
+        }
+
+        .activity-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .profit-icon {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.15), rgba(0, 150, 136, 0.15));
+            color: #00d4aa;
+        }
+
+        .withdrawal-icon {
+            background: linear-gradient(135deg, rgba(56, 178, 172, 0.15), rgba(32, 151, 146, 0.15));
+            color: #38b2ac;
+        }
+
+        .vip-icon {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            color: #667eea;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .user-avatar-small {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .username {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .user-level {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .activity-amount {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .amount-profit {
+            color: #00d4aa;
+        }
+
+        .amount-withdrawal {
+            color: #38b2ac;
+        }
+
+        .amount-vip {
+            color: #667eea;
+        }
+
+        .activity-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-description {
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+
+        .activity-time {
+            color: #718096;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        /* Activity Stats */
+        .activity-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-card-small {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .stat-card-small:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 1.4rem;
+        }
+
+        .profit-icon {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.2), rgba(0, 150, 136, 0.2));
+            color: #00d4aa;
+        }
+
+        .withdrawal-icon {
+            background: linear-gradient(135deg, rgba(56, 178, 172, 0.2), rgba(32, 151, 146, 0.2));
+            color: #38b2ac;
+        }
+
+        .user-icon {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            color: #667eea;
+        }
+
+        .stat-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .stat-text {
+            color: #a0aec0;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-header {
+                flex-direction: column;
+            }
+            
+            .stats-summary {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .activity-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
+            
+            .activity-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-feed {
+                max-height: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .live-activity-section {
+                padding: 20px 16px;
+                margin: 16px 12px;
+            }
+            
+            .activity-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px;
+            }
+            
+            .activity-icon {
+                margin-right: 0;
+                margin-bottom: 12px;
+            }
+            
+            .activity-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .activity-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                margin-top: 8px;
+            }
+        }
+    </style>
+
+    <!-- Live Activity Script -->
+    <script>
+        // Sample data for random users
+        const sampleUsers = [
+            { name: "Alex", initial: "A", level: "V4" },
+            { name: "John", initial: "J", level: "V3" },
+            { name: "Maria", initial: "M", level: "V2" },
+            { name: "David", initial: "D", level: "V4" },
+            { name: "Sarah", initial: "S", level: "V1" },
+            { name: "Michael", initial: "M", level: "V3" },
+            { name: "Emma", initial: "E", level: "V2" },
+            { name: "James", initial: "J", level: "V4" },
+            { name: "Lisa", initial: "L", level: "V1" },
+            { name: "Robert", initial: "R", level: "V3" },
+            { name: "Jennifer", initial: "J", level: "V2" },
+            { name: "Thomas", initial: "T", level: "V4" }
+        ];
+
+        // Sample activity types
+        const activityTypes = [
+            {
+                type: "profit",
+                icon: "fas fa-chart-line",
+                descriptions: [
+                    "made profit on BTC trade",
+                    "earned from ETH position",
+                    "gained from SOL trading",
+                    "profited from ADA investment",
+                    "earned profit from XRP"
+                ]
+            },
+            {
+                type: "withdrawal",
+                icon: "fas fa-wallet",
+                descriptions: [
+                    "withdrew funds to bank",
+                    "withdrew USDT to external wallet",
+                    "transferred profit to card",
+                    "withdrew earnings",
+                    "cashed out trading profits"
+                ]
+            },
+            {
+                type: "vip",
+                icon: "fas fa-crown",
+                descriptions: [
+                    "upgraded to VIP level",
+                    "joined VIP membership",
+                    "renewed VIP subscription",
+                    "activated VIP benefits"
+                ]
+            }
+        ];
+
+        // Generate random amount based on type
+        function generateRandomAmount(type) {
+            if (type === "profit") {
+                // Profits: $100 - $50,000
+                return "$" + (Math.floor(Math.random() * 50000) + 100).toLocaleString();
+            } else if (type === "withdrawal") {
+                // Withdrawals: $500 - $100,000
+                return "$" + (Math.floor(Math.random() * 100000) + 500).toLocaleString();
+            } else {
+                // VIP: $1,000 - $10,000
+                return "$" + (Math.floor(Math.random() * 10000) + 1000).toLocaleString();
+            }
+        }
+
+        // Generate random time (1 minute to 2 hours ago)
+        function generateRandomTime() {
+            const minutes = Math.floor(Math.random() * 120) + 1;
+            if (minutes < 60) {
+                return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+            } else {
+                const hours = Math.floor(minutes / 60);
+                const remainingMinutes = minutes % 60;
+                if (remainingMinutes === 0) {
+                    return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+                } else {
+                    return `${hours}h ${remainingMinutes}m ago`;
+                }
+            }
+        }
+
+        // Generate random user display name (partial masking)
+        function generateUsername(user) {
+            const name = user.name;
+            const maskedLength = Math.floor(name.length * 0.6);
+            const visiblePart = name.substring(0, name.length - maskedLength);
+            const maskedPart = "*".repeat(maskedLength);
+            return visiblePart + maskedPart;
+        }
+
+        // Create activity item HTML
+        function createActivityItem(user, activityType, description) {
+            const amount = generateRandomAmount(activityType.type);
+            const time = generateRandomTime();
+            const username = generateUsername(user);
+            
+            let amountClass = "";
+            if (activityType.type === "profit") amountClass = "amount-profit";
+            if (activityType.type === "withdrawal") amountClass = "amount-withdrawal";
+            if (activityType.type === "vip") amountClass = "amount-vip";
+            
+            let iconClass = "";
+            if (activityType.type === "profit") iconClass = "profit-icon";
+            if (activityType.type === "withdrawal") iconClass = "withdrawal-icon";
+            if (activityType.type === "vip") iconClass = "vip-icon";
+            
+            return `
+                <div class="activity-item new">
+                    <div class="activity-icon ${iconClass}">
+                        <i class="${activityType.icon}"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <div class="user-info">
+                                <div class="user-avatar-small">${user.initial}</div>
+                                <span class="username">${username}</span>
+                                <span class="user-level">${user.level}</span>
+                            </div>
+                            <div class="activity-amount ${amountClass}">${amount}</div>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-description">${description}</div>
+                            <div class="activity-time">${time}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Generate initial activities
+        function generateInitialActivities(count = 8) {
+            const feed = document.getElementById('activity-feed');
+            feed.innerHTML = '';
+            
+            for (let i = 0; i < count; i++) {
+                const randomUser = sampleUsers[Math.floor(Math.random() * sampleUsers.length)];
+                const randomActivityType = activityTypes[Math.floor(Math.random() * activityTypes.length)];
+                const randomDescription = randomActivityType.descriptions[
+                    Math.floor(Math.random() * randomActivityType.descriptions.length)
+                ];
+                
+                const activityItem = createActivityItem(randomUser, randomActivityType, randomDescription);
+                feed.innerHTML += activityItem;
+            }
+        }
+
+        // Add new activity
+        function addNewActivity() {
+            const feed = document.getElementById('activity-feed');
+            const randomUser = sampleUsers[Math.floor(Math.random() * sampleUsers.length)];
+            const randomActivityType = activityTypes[Math.floor(Math.random() * activityTypes.length)];
+            const randomDescription = randomActivityType.descriptions[
+                Math.floor(Math.random() * randomActivityType.descriptions.length)
+            ];
+            
+            const activityItem = createActivityItem(randomUser, randomActivityType, randomDescription);
+            
+            // Add at the top
+            feed.insertAdjacentHTML('afterbegin', activityItem);
+            
+            // Remove oldest item if more than 10
+            if (feed.children.length > 10) {
+                feed.removeChild(feed.lastChild);
+            }
+            
+            // Update stats
+            updateLiveStats();
+        }
+
+        // Update live stats
+        function updateLiveStats() {
+            const todayProfit = document.getElementById('today-profit');
+            const todayWithdrawals = document.getElementById('today-withdrawals');
+            
+            // Generate random but realistic increases
+            const profitIncrease = Math.floor(Math.random() * 5000) + 1000;
+            const withdrawalIncrease = Math.floor(Math.random() * 10000) + 5000;
+            
+            // Parse current values and add increase
+            const currentProfit = parseInt(todayProfit.textContent.replace(/[^0-9]/g, '')) + profitIncrease;
+            const currentWithdrawals = parseInt(todayWithdrawals.textContent.replace(/[^0-9]/g, '')) + withdrawalIncrease;
+            
+            // Update display
+            todayProfit.textContent = `+$${(currentProfit / 1000).toFixed(1)}K`;
+            todayWithdrawals.textContent = `$${(currentWithdrawals / 1000000).toFixed(1)}M`;
+        }
+
+        // Tab switching
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.activity-tab');
+            const feed = document.getElementById('activity-feed');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Filter activities based on tab
+                    const tabType = tab.dataset.tab;
+                    const allItems = feed.querySelectorAll('.activity-item');
+                    
+                    allItems.forEach(item => {
+                        if (tabType === 'all') {
+                            item.style.display = 'flex';
+                        } else {
+                            const icon = item.querySelector('.activity-icon');
+                            const isProfit = icon.classList.contains('profit-icon');
+                            const isWithdrawal = icon.classList.contains('withdrawal-icon');
+                            const isVip = icon.classList.contains('vip-icon');
+                            
+                            if ((tabType === 'profits' && isProfit) ||
+                                (tabType === 'withdrawals' && isWithdrawal) ||
+                                (tabType === 'vip' && isVip)) {
+                                item.style.display = 'flex';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            generateInitialActivities(8);
+            setupTabs();
+            
+            // Add new activity every 8-15 seconds
+            setInterval(addNewActivity, Math.random() * 7000 + 8000);
+            
+            // Update stats every 10 seconds
+            setInterval(updateLiveStats, 10000);
+        });
+    </script>
+
     <!-- CoinPaprika Live Price Script – Reliable Alternative -->
     <script>
         const COINS = [
@@ -197,7 +954,7 @@
 
                     const price = ticker.quotes.USD.price;
                     const change = ticker.quotes.USD.percent_change_24h || 0;
-                    const changeText = change >= 0 ? `+\( {change.toFixed(2)}%` : ` \){change.toFixed(2)}%`;
+                    const changeText = change >= 0 ? `+${change.toFixed(2)}%` : `${change.toFixed(2)}%`;
 
                     priceEl.textContent = price.toLocaleString('en-US', {
                         minimumFractionDigits: 2,
