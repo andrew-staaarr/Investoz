@@ -69,7 +69,7 @@
             </div>
         </section>
 
-        <!-- Live Activity Section – Fully Responsive & Fixed -->
+        <!-- Live Activity Section – Moved here + Fully Responsive -->
         <section class="live-activity-section">
             <div class="section-header">
                 <div class="header-left">
@@ -78,7 +78,8 @@
                         LIVE ACTIVITY
                     </div>
                     <h2>Recent Profits & Withdrawals</h2>
-                     </div>
+       
+                </div>
                 <div class="header-right">
                     <div class="stats-summary">
                         <div class="summary-item">
@@ -104,27 +105,33 @@
 
                 <!-- Activity Feed -->
                 <div class="activity-feed" id="activity-feed">
-                    <!-- Items generated dynamically -->
+                    <!-- Activity items will be dynamically generated here -->
                 </div>
 
                 <!-- Activity Stats -->
                 <div class="activity-stats">
                     <div class="stat-card-small">
-                        <div class="stat-icon profit-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="stat-icon profit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
                         <div class="stat-content">
                             <span class="stat-number">1,247</span>
                             <span class="stat-text">Profits Today</span>
                         </div>
                     </div>
                     <div class="stat-card-small">
-                        <div class="stat-icon withdrawal-icon"><i class="fas fa-wallet"></i></div>
+                        <div class="stat-icon withdrawal-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
                         <div class="stat-content">
                             <span class="stat-number">892</span>
                             <span class="stat-text">Withdrawals Today</span>
                         </div>
                     </div>
                     <div class="stat-card-small">
-                        <div class="stat-icon user-icon"><i class="fas fa-user-check"></i></div>
+                        <div class="stat-icon user-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
                         <div class="stat-content">
                             <span class="stat-number">56</span>
                             <span class="stat-text">New VIPs Today</span>
@@ -138,54 +145,65 @@
         <section class="market-overview premium-market">
             <div class="market-header">
                 <h2>Top 10 Live Cryptocurrencies</h2>
-                 </div>
+                <span class="market-update">Real-time • Updated every 5s</span>
+            </div>
 
             <div class="crypto-carousel">
+                <!-- Bitcoin -->
                 <div class="crypto-card premium-crypto" id="btc-card">
                     <div class="crypto-symbol">BTC/USDT</div>
                     <div class="crypto-price" id="btc-price">Loading...</div>
                     <div class="crypto-change" id="btc-change">—</div>
                 </div>
+                <!-- Ethereum -->
                 <div class="crypto-card premium-crypto" id="eth-card">
                     <div class="crypto-symbol">ETH/USDT</div>
                     <div class="crypto-price" id="eth-price">Loading...</div>
                     <div class="crypto-change" id="eth-change">—</div>
                 </div>
+                <!-- BNB -->
                 <div class="crypto-card premium-crypto" id="bnb-card">
                     <div class="crypto-symbol">BNB/USDT</div>
                     <div class="crypto-price" id="bnb-price">Loading...</div>
                     <div class="crypto-change" id="bnb-change">—</div>
                 </div>
+                <!-- Solana -->
                 <div class="crypto-card premium-crypto" id="sol-card">
                     <div class="crypto-symbol">SOL/USDT</div>
                     <div class="crypto-price" id="sol-price">Loading...</div>
                     <div class="crypto-change" id="sol-change">—</div>
                 </div>
+                <!-- XRP -->
                 <div class="crypto-card premium-crypto" id="xrp-card">
                     <div class="crypto-symbol">XRP/USDT</div>
                     <div class="crypto-price" id="xrp-price">Loading...</div>
                     <div class="crypto-change" id="xrp-change">—</div>
                 </div>
+                <!-- Cardano -->
                 <div class="crypto-card premium-crypto" id="ada-card">
                     <div class="crypto-symbol">ADA/USDT</div>
                     <div class="crypto-price" id="ada-price">Loading...</div>
                     <div class="crypto-change" id="ada-change">—</div>
                 </div>
+                <!-- Dogecoin -->
                 <div class="crypto-card premium-crypto" id="doge-card">
                     <div class="crypto-symbol">DOGE/USDT</div>
                     <div class="crypto-price" id="doge-price">Loading...</div>
                     <div class="crypto-change" id="doge-change">—</div>
                 </div>
+                <!-- Avalanche -->
                 <div class="crypto-card premium-crypto" id="avax-card">
                     <div class="crypto-symbol">AVAX/USDT</div>
                     <div class="crypto-price" id="avax-price">Loading...</div>
                     <div class="crypto-change" id="avax-change">—</div>
                 </div>
+                <!-- Shiba Inu -->
                 <div class="crypto-card premium-crypto" id="shib-card">
                     <div class="crypto-symbol">SHIB/USDT</div>
                     <div class="crypto-price" id="shib-price">Loading...</div>
                     <div class="crypto-change" id="shib-change">—</div>
                 </div>
+                <!-- Chainlink -->
                 <div class="crypto-card premium-crypto" id="link-card">
                     <div class="crypto-symbol">LINK/USDT</div>
                     <div class="crypto-price" id="link-price">Loading...</div>
@@ -211,31 +229,33 @@
         </nav>
     </div>
 
-    <!-- Live Activity Styles – Fully Responsive & Fixed -->
+    <!-- Live Activity Styles – Responsive Version -->
     <style>
         .live-activity-section {
             background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 1.2rem;
-            margin: 1.2rem 1rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            padding: 1.5rem;
+            margin: 1.5rem 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .live-indicator {
             display: inline-flex;
             align-items: center;
-            background: rgba(220, 38, 38, 0.2);
+            background: rgba(220, 38, 38, 0.15);
             color: #f87171;
             font-size: 0.8rem;
             font-weight: 700;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 20px;
             margin-bottom: 0.5rem;
         }
@@ -245,91 +265,108 @@
             height: 8px;
             background: #f87171;
             border-radius: 50%;
-            margin-right: 6px;
+            margin-right: 8px;
             animation: pulse 2s infinite;
         }
 
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
         .live-activity-section h2 {
-            color: white;
-            font-size: 1.5rem;
+            color: #ffffff;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin: 0.3rem 0;
+            margin: 0 0 8px 0;
+            background: linear-gradient(90deg, #ffffff, #38b2ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-align: center;
         }
 
         .section-subtitle {
             color: #a0aec0;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             margin: 0;
             text-align: center;
         }
 
+        .header-right {
+            flex-shrink: 0;
+        }
+
         .stats-summary {
             display: flex;
-            flex-wrap: wrap;
+            gap: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .summary-item {
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 12px;
-            padding: 0.8rem 1.2rem;
-            min-width: 130px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            min-width: 140px;
         }
 
         .summary-value {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #00d4aa;
             display: block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4aa;
+            margin-bottom: 4px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
+        #today-withdrawals {
+            color: #38b2ac;
+        }
+
         .summary-label {
-            font-size: 0.8rem;
+            display: block;
             color: #a0aec0;
+            font-size: 0.85rem;
+            text-align: center;
         }
 
         .activity-container {
             background: rgba(15, 23, 42, 0.6);
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .activity-tabs {
             display: flex;
-            overflow-x: auto;
-            background: rgba(30, 41, 59, 0.85);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0 0.5rem;
-            scrollbar-width: none;
+            background: rgba(30, 41, 59, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0 16px;
         }
-
-        .activity-tabs::-webkit-scrollbar { display: none; }
 
         .activity-tab {
             background: none;
             border: none;
             color: #a0aec0;
-            padding: 12px 18px;
-            font-size: 0.9rem;
+            padding: 16px 20px;
+            font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s;
             position: relative;
+            transition: all 0.3s;
         }
 
-        .activity-tab:hover { color: white; }
+        .activity-tab:hover {
+            color: #ffffff;
+        }
 
         .activity-tab.active {
-            color: #00d4aa;
+            color: #38b2ac;
             font-weight: 600;
         }
 
@@ -337,41 +374,103 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
+            left: 0;
+            right: 0;
             height: 3px;
-            background: #00d4aa;
-            border-radius: 3px;
+            background: linear-gradient(90deg, #38b2ac, #00d4aa);
+            border-radius: 3px 3px 0 0;
         }
 
         .activity-feed {
             max-height: 320px;
             overflow-y: auto;
-            padding: 1rem;
+            padding: 16px;
+        }
+
+        .activity-feed::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .activity-feed::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .activity-feed::-webkit-scrollbar-thumb {
+            background: rgba(56, 178, 172, 0.5);
+            border-radius: 3px;
         }
 
         .activity-item {
-            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .activity-item:hover {
+            background: rgba(56, 178, 172, 0.05);
+            border-color: rgba(56, 178, 172, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .activity-item.new {
+            background: rgba(56, 178, 172, 0.08);
+            border: 1px solid rgba(56, 178, 172, 0.15);
+        }
+
+        .activity-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .profit-icon {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.15), rgba(0, 150, 136, 0.15));
+            color: #00d4aa;
+        }
+
+        .withdrawal-icon {
+            background: linear-gradient(135deg, rgba(56, 178, 172, 0.15), rgba(32, 151, 146, 0.15));
+            color: #38b2ac;
+        }
+
+        .vip-icon {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            color: #667eea;
+        }
+
+        .activity-content {
+            flex: 1;
         }
 
         .activity-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 0.6rem;
+            align-items: center;
+            margin-bottom: 6px;
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 8px;
         }
 
         .user-avatar-small {
@@ -382,101 +481,167 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
             font-size: 0.8rem;
             font-weight: 600;
-            color: white;
         }
 
         .username {
             font-weight: 600;
-            font-size: 0.9rem;
-            color: white;
+            color: #ffffff;
+            font-size: 0.95rem;
         }
 
         .user-level {
             background: rgba(245, 158, 11, 0.15);
             color: #fbbf24;
             padding: 2px 8px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 0.7rem;
+            font-weight: 600;
         }
 
         .activity-amount {
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            max-width: 120px;
+            text-align: right;
         }
 
         .activity-details {
-            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-description {
             color: #a0aec0;
-            word-break: break-word;
+            font-size: 0.85rem;
+        }
+
+        .activity-time {
+            color: #718096;
+            font-size: 0.8rem;
+            font-style: italic;
+            white-space: nowrap;
         }
 
         .activity-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1rem;
-            padding: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 20px;
             background: rgba(30, 41, 59, 0.8);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        @media (min-width: 768px) {
+        .stat-card-small {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .stat-card-small:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 1.4rem;
+        }
+
+        .stat-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .stat-text {
+            color: #a0aec0;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
             .section-header {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
+                flex-direction: column;
             }
-
-            .activity-feed {
-                max-height: 420px;
+            
+            .stats-summary {
+                width: 100%;
+                justify-content: center;
             }
-
-            .activity-item {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            .activity-header {
+            
+            .activity-tabs {
+                overflow-x: auto;
                 flex-wrap: nowrap;
             }
-
-            .summary-value {
-                font-size: 1.6rem;
+            
+            .activity-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-feed {
+                max-height: 280px;
             }
         }
 
         @media (max-width: 480px) {
             .live-activity-section {
-                padding: 1rem 0.8rem;
-                margin: 1rem 0.5rem;
+                padding: 16px;
+                margin: 16px;
             }
-
-            .summary-value {
-                font-size: 1.2rem;
+            
+            .activity-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px;
             }
-
-            .summary-item {
-                min-width: 110px;
-                padding: 0.6rem;
+            
+            .activity-icon {
+                margin-right: 0;
+                margin-bottom: 12px;
             }
-
-            .activity-tab {
-                padding: 10px 14px;
-                font-size: 0.85rem;
+            
+            .activity-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
             }
-
-            .activity-amount {
-                font-size: 1rem;
+            
+            .activity-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                margin-top: 8px;
             }
         }
     </style>
 
-    <!-- Live Activity Script – Fixed & Enhanced -->
+    <!-- Live Activity Script -->
     <script>
+        // Sample data for random users
         const sampleUsers = [
             { name: "Alex", initial: "A", level: "V4" },
             { name: "John", initial: "J", level: "V3" },
@@ -492,6 +657,7 @@
             { name: "Thomas", initial: "T", level: "V4" }
         ];
 
+        // Sample activity types
         const activityTypes = [
             { type: "profit", icon: "fas fa-chart-line", descriptions: [
                 "made profit on BTC trade", "earned from ETH position", "gained from SOL trading"
@@ -512,7 +678,7 @@
 
         function generateRandomTime() {
             const minutes = Math.floor(Math.random() * 120) + 1;
-            return minutes < 60 ? `\( {minutes}m ago` : ` \){Math.floor(minutes/60)}h ago`;
+            return minutes < 60 ? `\( {minutes}m ago` : ` \){Math.floor(minutes / 60)}h ago`;
         }
 
         function generateUsername(user) {
@@ -563,20 +729,29 @@
             }
         }
 
-        // Tab Switching (now working)
+        // Tab switching
         function setupTabs() {
-            document.querySelectorAll('.activity-tab').forEach(tab => {
+            const tabs = document.querySelectorAll('.activity-tab');
+            const feed = document.getElementById('activity-feed');
+            
+            tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    document.querySelectorAll('.activity-tab').forEach(t => t.classList.remove('active'));
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
                     tab.classList.add('active');
-
+                    
+                    // Filter activities based on tab
                     const tabType = tab.dataset.tab;
-                    document.querySelectorAll('.activity-item').forEach(item => {
+                    const allItems = feed.querySelectorAll('.activity-item');
+                    
+                    allItems.forEach(item => {
                         const icon = item.querySelector('.activity-icon');
-                        const isProfit = icon?.classList.contains('profit-icon');
-                        const isWithdrawal = icon?.classList.contains('withdrawal-icon');
-                        const isVip = icon?.classList.contains('vip-icon');
-
+                        const isProfit = icon.classList.contains('profit-icon');
+                        const isWithdrawal = icon.classList.contains('withdrawal-icon');
+                        const isVip = icon.classList.contains('vip-icon');
+                        
                         if (tabType === 'all' ||
                             (tabType === 'profits' && isProfit) ||
                             (tabType === 'withdrawals' && isWithdrawal) ||
@@ -590,33 +765,103 @@
             });
         }
 
-        // Live updating of Today's Profit & Withdrawals every 5 seconds
+        // Update live stats
         function updateLiveStats() {
             const profitEl = document.getElementById('today-profit');
-            const withdrawEl = document.getElementById('today-withdrawals');
+            const withdrawalsEl = document.getElementById('today-withdrawals');
+            
+            // Parse current values
+            let currentProfit = parseFloat(profitEl.textContent.replace(/[+ $K]/g, '')) || 842.5;
+            let currentWithdrawals = parseFloat(withdrawalsEl.textContent.replace(/[$M]/g, '')) || 3.2;
 
-            let currentProfit = parseFloat(profitEl.textContent.replace(/[+$K]/g, '')) || 842.5;
-            let currentWithdraw = parseFloat(withdrawEl.textContent.replace(/[M]/g, '')) || 3.2;
+            // Add random small amount
+            currentProfit += Math.random() * 10 + 0.1; // +0.1K to +10K
+            currentWithdrawals += Math.random() * 0.3 + 0.01; // +0.01M to +0.3M
 
-            // Small random increase
-            currentProfit += (Math.random() * 14 + 1); // +$1K to $15K
-            currentWithdraw += (Math.random() * 250 + 50) / 1000; // +$50K to $300K (in millions)
-
+            // Update display
             profitEl.textContent = `+\[ {currentProfit.toFixed(1)}K`;
-            withdrawEl.textContent = ` \]{currentWithdraw.toFixed(2)}M`;
+            withdrawalsEl.textContent = ` \]{currentWithdrawals.toFixed(2)}M`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             generateInitialActivities(8);
             setupTabs();
-            setInterval(addNewActivity, 10000); // New activity every ~10s
-            setInterval(updateLiveStats, 5000);  // Stats increase every 5s
+            setInterval(addNewActivity, 10000);
+            setInterval(updateLiveStats, 5000);
         });
     </script>
 
-    <!-- CoinPaprika Live Price Script (unchanged) -->
+    <!-- CoinPaprika Live Price Script – Reliable Alternative -->
     <script>
-        // ... your existing price update script ...
+        const COINS = [
+            { id: 'btc-bitcoin', symbol: 'BTC', priceEl: 'btc-price', changeEl: 'btc-change' },
+            { id: 'eth-ethereum', symbol: 'ETH', priceEl: 'eth-price', changeEl: 'eth-change' },
+            { id: 'bnb-binance-coin', symbol: 'BNB', priceEl: 'bnb-price', changeEl: 'bnb-change' },
+            { id: 'sol-solana', symbol: 'SOL', priceEl: 'sol-price', changeEl: 'sol-change' },
+            { id: 'xrp-xrp', symbol: 'XRP', priceEl: 'xrp-price', changeEl: 'xrp-change' },
+            { id: 'ada-cardano', symbol: 'ADA', priceEl: 'ada-price', changeEl: 'ada-change' },
+            { id: 'doge-doge', symbol: 'DOGE', priceEl: 'doge-price', changeEl: 'doge-change' },
+            { id: 'avax-avalanche', symbol: 'AVAX', priceEl: 'avax-price', changeEl: 'avax-change' },
+            { id: 'shib-shiba-inu', symbol: 'SHIB', priceEl: 'shib-price', changeEl: 'shib-change' },
+            { id: 'link-chainlink', symbol: 'LINK', priceEl: 'link-price', changeEl: 'link-change' }
+        ];
+
+        const loadingText = 'Loading...';
+        const errorText = '—';
+
+        async function updatePrices() {
+            try {
+                const response = await fetch('https://api.coinpaprika.com/v1/tickers', {
+                    cache: 'no-store',
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const data = await response.json();
+
+                COINS.forEach(coin => {
+                    const ticker = data.find(t => t.id === coin.id);
+                    const priceEl = document.getElementById(coin.priceEl);
+                    const changeEl = document.getElementById(coin.changeEl);
+
+                    if (!ticker || !ticker.quotes?.USD) {
+                        priceEl.textContent = errorText;
+                        changeEl.textContent = errorText;
+                        return;
+                    }
+
+                    const price = ticker.quotes.USD.price;
+                    const change = ticker.quotes.USD.percent_change_24h || 0;
+                    const changeText = change >= 0 ? `+\( {change.toFixed(2)}%` : ` \){change.toFixed(2)}%`;
+
+                    priceEl.textContent = price.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+                    changeEl.textContent = changeText;
+
+                    changeEl.className = 'crypto-change ' + (change >= 0 ? 'positive' : 'negative');
+
+                    // Pulse animation
+                    priceEl.classList.remove('price-pulse');
+                    changeEl.classList.remove('price-pulse');
+                    void priceEl.offsetWidth; // Restart animation
+                    priceEl.classList.add('price-pulse');
+                    changeEl.classList.add('price-pulse');
+                });
+            } catch (err) {
+                console.error('Price update failed:', err);
+                COINS.forEach(coin => {
+                    document.getElementById(coin.priceEl).textContent = errorText;
+                    document.getElementById(coin.changeEl).textContent = errorText;
+                });
+            }
+        }
+
+        // Initial fetch + every 5 seconds
+        updatePrices();
+        setInterval(updatePrices, 5000);
     </script>
 </body>
 </html>
